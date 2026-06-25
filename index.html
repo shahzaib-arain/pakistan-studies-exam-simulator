@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAJU Pakistan Studies — Final Term Exam Prep</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pk-green:#01411C;
+  --pk-green-light:#0a6b32;
+  --pk-white:#ffffff;
+  --accent:#ffb703;
+  --bg:#0d1f17;
+  --card-bg:rgba(255,255,255,0.06);
+  --card-border:rgba(255,255,255,0.12);
+  --text-main:#eef5ee;
+  --text-sub:#a9c2ad;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+[data-theme="light"]{
+  --bg:#f3f7f3;
+  --card-bg:rgba(255,255,255,0.85);
+  --card-border:rgba(1,65,28,0.12);
+  --text-main:#10241a;
+  --text-sub:#3c5a45;
+}
+*{box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text-main);
+  min-height:100vh;
+  margin:0;
+  transition:background .4s, color .4s;
+  overflow-x:hidden;
+}
+.font-h{font-family:'Rajdhani',sans-serif;}
+/* Animated flag-inspired background */
+.bg-anim{
+  position:fixed;inset:0;z-index:-1;overflow:hidden;
+}
+.bg-anim::before, .bg-anim::after{
+  content:"";position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;
+  animation:float 14s ease-in-out infinite;
+}
+.bg-anim::before{
+  width:480px;height:480px;background:var(--pk-green-light);top:-120px;left:-120px;
+}
+.bg-anim::after{
+  width:420px;height:420px;background:var(--accent);bottom:-140px;right:-100px;
+  animation-delay:3s;
+}
+@keyframes float{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(40px,30px) scale(1.1);}
+}
+.crescent-star{
+  position:fixed;right:6%;top:8%;font-size:5rem;color:rgba(255,255,255,.06);z-index:-1;
+  animation:spin 30s linear infinite;
+}
+[data-theme="light"] .crescent-star{color:rgba(1,65,28,.06);}
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+.glass-card{
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+}
+.btn-pk{
+  background:linear-gradient(135deg,var(--pk-green) 0%, var(--pk-green-light) 100%);
+  border:none;color:#fff;font-weight:600;border-radius:12px;padding:.7rem 1.6rem;
+  transition:.25s; letter-spacing:.3px;
+}
+.btn-pk:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(10,107,50,.4);color:#fff;}
+.btn-accent{
+  background:linear-gradient(135deg,var(--accent),#ff8c00);
+  border:none;color:#1a1a1a;font-weight:700;border-radius:12px;padding:.7rem 1.6rem;
+  transition:.25s;
+}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(255,140,0,.4);}
+.form-control, .form-select{
+  background:rgba(255,255,255,0.07);border:1px solid var(--card-border);color:var(--text-main);
+  border-radius:10px;
+}
+.form-control:focus{background:rgba(255,255,255,0.1);color:var(--text-main);box-shadow:0 0 0 .2rem rgba(10,107,50,.25);border-color:var(--pk-green-light);}
+.form-control::placeholder{color:var(--text-sub);}
+
+/* ---------- Login Page ---------- */
+#loginPage{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;
+}
+.login-card{
+  max-width:430px;width:100%;padding:2.6rem 2.2rem;text-align:center;
+  animation:popIn .6s ease;
+}
+@keyframes popIn{from{opacity:0;transform:translateY(30px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+.login-logo{
+  width:78px;height:78px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pk-green),var(--pk-green-light));
+  display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;
+  box-shadow:0 8px 24px rgba(10,107,50,.5);
+  font-size:2.1rem;color:var(--accent);
+}
+.shake{animation:shake .4s;}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%{transform:translateX(-10px);}
+  40%{transform:translateX(10px);}
+  60%{transform:translateX(-6px);}
+  80%{transform:translateX(6px);}
+}
+
+/* ---------- Common page wrapper ---------- */
+.page{display:none;position:fixed;inset:0;overflow-y:auto;background:var(--bg);z-index:1;-webkit-overflow-scrolling:touch;}
+.page.active{display:block;z-index:2;}
+@keyframes slideInRight{from{transform:translateX(100%);}to{transform:translateX(0);}}
+@keyframes slideInLeft{from{transform:translateX(-100%);}to{transform:translateX(0);}}
+@keyframes slideOutLeft{from{transform:translateX(0);}to{transform:translateX(-100%);}}
+@keyframes slideOutRight{from{transform:translateX(0);}to{transform:translateX(100%);}}
+
+/* ---------- Dashboard ---------- */
+.navbar-pk{
+  background:var(--card-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--card-border);
+}
+.topic-card{
+  border-radius:16px;padding:1.3rem;height:100%;cursor:pointer;transition:.25s;
+  border:1px solid var(--card-border);background:var(--card-bg);
+}
+.topic-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--pk-green-light);}
+.topic-icon{
+  width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--pk-green),var(--pk-green-light));color:var(--accent);font-size:1.3rem;
+}
+.stat-box{
+  border-radius:16px;padding:1.4rem;text-align:center;background:var(--card-bg);border:1px solid var(--card-border);
+}
+.stat-num{font-size:2.1rem;font-weight:800;font-family:'Rajdhani',sans-serif;color:var(--accent);}
+
+/* ---------- Exam Page ---------- */
+.exam-top{position:sticky;top:0;z-index:30;background:var(--card-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--card-border);}
+.progress{height:8px;border-radius:6px;background:rgba(255,255,255,.1);}
+.progress-bar{background:linear-gradient(90deg,var(--pk-green-light),var(--accent));}
+.option-btn{
+  display:block;width:100%;text-align:left;padding:.9rem 1.1rem;margin-bottom:.7rem;border-radius:12px;
+  border:1px solid var(--card-border);background:rgba(255,255,255,.05);color:var(--text-main);
+  transition:.2s;font-weight:500;
+}
+.option-btn:hover:not(:disabled){border-color:var(--pk-green-light);background:rgba(255,255,255,.1);}
+.option-btn.correct{background:rgba(40,167,69,.35)!important;border-color:#28a745!important;color:#fff!important;}
+.option-btn.wrong{background:rgba(220,53,69,.35)!important;border-color:#dc3545!important;color:#fff!important;}
+.option-btn:disabled{opacity:.85;cursor:not-allowed;}
+.palette-btn{
+  width:38px;height:38px;border-radius:8px;font-size:.8rem;font-weight:700;border:1px solid var(--card-border);
+  background:rgba(255,255,255,.05);color:var(--text-main);
+}
+.palette-btn.answered{background:#28a745;color:#fff;border-color:#28a745;}
+.palette-btn.skipped{background:#ffc107;color:#1a1a1a;border-color:#ffc107;}
+.palette-btn.current{outline:2px solid var(--accent);}
+.palette-btn.bookmarked{box-shadow:0 0 0 2px var(--accent) inset;}
+#timerBadge{font-family:'Rajdhani',sans-serif;font-size:1.05rem;letter-spacing:1px;}
+.bookmark-toggle{cursor:pointer;font-size:1.4rem;color:var(--text-sub);transition:.2s;}
+.bookmark-toggle.active{color:var(--accent);transform:scale(1.15);}
+
+/* ---------- Result ---------- */
+.circular-progress{
+  width:190px;height:190px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin:0 auto;background:conic-gradient(var(--accent) calc(var(--p,0)*1%), rgba(255,255,255,.08) 0);
+  transition:1.4s ease;
+}
+.circular-progress-inner{
+  width:150px;height:150px;border-radius:50%;background:var(--bg);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+}
+.grade-badge{font-size:1.4rem;font-weight:800;padding:.4rem 1.4rem;border-radius:50px;}
+
+/* ---------- Review ---------- */
+.review-item{border-radius:14px;padding:1.1rem;margin-bottom:1rem;border:1px solid var(--card-border);background:var(--card-bg);}
+.explain-box{border-left:3px solid var(--accent);padding:.6rem .9rem;margin-top:.6rem;background:rgba(255,183,3,.08);border-radius:8px;font-size:.92rem;color:var(--text-sub);}
+
+.theme-toggle{
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--card-border);background:var(--card-bg);
+  display:flex;align-items:center;justify-content:center;color:var(--text-main);
+}
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-thumb{background:var(--pk-green-light);border-radius:10px;}
+
+.modal-content{background:var(--bg);color:var(--text-main);border:1px solid var(--card-border);}
+
+/* ---------- Mobile responsiveness ---------- */
+@media (max-width: 576px){
+  .login-card{padding:1.8rem 1.4rem;max-width:94vw;}
+  .login-logo{width:64px;height:64px;font-size:1.7rem;}
+  .stat-num{font-size:1.5rem;}
+  .stat-box{padding:1rem .5rem;}
+  .topic-icon{width:42px;height:42px;font-size:1.05rem;}
+  .topic-card{padding:1rem;}
+  #qText{font-size:1.05rem;}
+  .option-btn{padding:.75rem .85rem;font-size:.92rem;}
+  .palette-btn{width:34px;height:34px;font-size:.75rem;}
+  .circular-progress{width:150px;height:150px;}
+  .circular-progress-inner{width:115px;height:115px;}
+  .grade-badge{font-size:1.1rem;padding:.3rem 1rem;}
+  .exam-top .badge{font-size:.7rem;padding:.35rem .5rem;}
+  #timerBadge{font-size:.9rem;}
+  .btn-pk, .btn-accent{padding:.6rem 1.1rem;font-size:.9rem;}
+  .navbar span.fs-5{font-size:1.05rem!important;}
+  .container{padding-left:.85rem;padding-right:.85rem;}
+}
+@media (max-width: 400px){
+  .exam-top .d-flex.gap-2.small{width:100%;justify-content:space-between;}
+  #qNum, #qTotal{font-size:.95rem;}
+  .exam-nav-row{flex-wrap:wrap;}
+  .exam-nav-row #prevBtn, .exam-nav-row #nextBtn{flex:1 1 48%;font-size:.85rem;padding:.6rem .5rem;}
+  #submitExamBtn{width:100%;}
+}
+html, body{height:100%;}
+* { -webkit-tap-highlight-color: transparent; }
+button, .option-btn, .topic-card, .palette-btn{touch-action:manipulation;}
+</style>
+</head>
+<body>
+
+<div class="bg-anim"></div>
+<i class="fa-solid fa-moon crescent-star"></i>
+
+<!-- ================= LOGIN PAGE ================= -->
+<div id="loginPage" class="page active">
+  <div class="glass-card login-card" id="loginCard">
+    <div class="login-logo"><i class="fa-solid fa-shield-halved"></i></div>
+    <h3 class="font-h fw-bold mb-1">MAJU Pak Studies</h3>
+    <p class="text-sub mb-4" style="color:var(--text-sub);font-size:.92rem;">Final Term Exam Preparation Portal</p>
+    <form id="loginForm">
+      <div class="mb-3 text-start">
+        <label class="form-label small">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter username" autocomplete="off">
+      </div>
+      <div class="mb-3 text-start">
+        <label class="form-label small">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password" autocomplete="off">
+      </div>
+      <div id="loginError" class="text-danger small mb-2" style="display:none;"><i class="fa-solid fa-circle-exclamation me-1"></i>Invalid username or password</div>
+      <button type="submit" class="btn btn-pk w-100 mt-1"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</button>
+    </form>
+    <p class="mt-4 mb-0" style="font-size:.75rem;color:var(--text-sub);">Muhammad Ali Jinnah University · Karachi</p>
+  </div>
+</div>
+
+<!-- ================= DASHBOARD PAGE ================= -->
+<div id="dashboardPage" class="page">
+  <nav class="navbar navbar-pk px-3 py-2 d-flex justify-content-between align-items-center">
+    <span class="font-h fw-bold fs-5"><i class="fa-solid fa-flag me-2" style="color:var(--accent);"></i>Pak Studies Prep</span>
+    <div class="d-flex align-items-center gap-2">
+      <div class="theme-toggle" id="themeToggle" role="button"><i class="fa-solid fa-sun" id="themeIcon"></i></div>
+      <button class="btn btn-sm btn-outline-light" id="logoutBtn" style="border-color:var(--card-border);color:var(--text-main);"><i class="fa-solid fa-power-off"></i></button>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <div class="text-center mb-4">
+      <h2 class="font-h fw-bold">Welcome, Shahzaib Sajjad 👋</h2>
+      <p style="color:var(--text-sub);">CS-4310 — Final Term · Pakistan Studies (Topics 9–15)</p>
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-3"><div class="stat-box"><div class="stat-num" id="statTotal">0</div><div class="small" style="color:var(--text-sub);">Total MCQs</div></div></div>
+      <div class="col-6 col-md-3"><div class="stat-box"><div class="stat-num" id="statTopics">7</div><div class="small" style="color:var(--text-sub);">Topics</div></div></div>
+      <div class="col-6 col-md-3"><div class="stat-box"><div class="stat-num" id="statDuration">--</div><div class="small" style="color:var(--text-sub);">Est. Minutes</div></div></div>
+      <div class="col-6 col-md-3"><div class="stat-box"><div class="stat-num" id="statBookmarks">0</div><div class="small" style="color:var(--text-sub);">Bookmarked</div></div></div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <input type="text" id="searchInput" class="form-control" placeholder="🔍 Search MCQs... e.g. CPEC, Ayub Khan, Gwadar, Culture">
+      </div>
+      <div class="col-md-6 d-flex flex-wrap gap-2 justify-content-md-end">
+        <button class="btn btn-accent" id="randomExamBtn"><i class="fa-solid fa-shuffle me-2"></i>Random 120 MCQ Exam</button>
+        <button class="btn btn-pk" id="bookmarkReviewBtn"><i class="fa-solid fa-bookmark me-2"></i>Review Bookmarks</button>
+      </div>
+    </div>
+    <div id="searchResults" class="glass-card p-3 mb-4" style="display:none;max-height:340px;overflow:auto;"></div>
+
+    <h5 class="font-h fw-bold mb-3"><i class="fa-solid fa-layer-group me-2"></i>Topics</h5>
+    <div class="row g-3" id="topicGrid"></div>
+
+    <div class="text-center mt-5 mb-3">
+      <button class="btn btn-pk btn-lg px-5" id="startFullExamBtn"><i class="fa-solid fa-pen-to-square me-2"></i>Start Full Exam (All MCQs)</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= EXAM PAGE ================= -->
+<div id="examPage" class="page">
+  <div class="exam-top px-3 py-2">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <button class="btn btn-sm btn-outline-light" id="exitExamBtn" style="border-color:var(--card-border);color:var(--text-main);"><i class="fa-solid fa-arrow-left me-1"></i>Exit</button>
+      <span class="badge text-bg-dark" id="timerBadge"><i class="fa-solid fa-clock me-1"></i>00:00</span>
+      <div class="d-flex gap-2 small">
+        <span class="badge bg-success">Answered: <span id="ansCount">0</span></span>
+        <span class="badge bg-warning text-dark">Skipped: <span id="skipCount">0</span></span>
+        <span class="badge bg-secondary">Remaining: <span id="remCount">0</span></span>
+      </div>
+    </div>
+    <div class="progress mt-2"><div class="progress-bar" id="examProgressBar" style="width:0%"></div></div>
+  </div>
+
+  <div class="container py-4">
+    <div class="row g-4">
+      <div class="col-lg-9">
+        <div class="glass-card p-4" id="questionCard">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <span class="badge" style="background:var(--pk-green-light);" id="qTopicBadge">Topic</span>
+            <i class="fa-regular fa-bookmark bookmark-toggle" id="bookmarkToggle"></i>
+          </div>
+          <h6 class="text-sub mb-2" style="color:var(--text-sub);">Question <span id="qNum">1</span> of <span id="qTotal">1</span></h6>
+          <h5 class="mb-4 font-h" id="qText" style="line-height:1.5;"></h5>
+          <div id="optionsWrap"></div>
+        </div>
+        <div class="d-flex justify-content-between mt-3 gap-2 exam-nav-row">
+          <button class="btn btn-pk" id="prevBtn"><i class="fa-solid fa-arrow-left me-2"></i>Previous</button>
+          <button class="btn btn-pk" id="nextBtn">Next<i class="fa-solid fa-arrow-right ms-2"></i></button>
+        </div>
+        <div class="text-center mt-2">
+          <button class="btn btn-accent px-4" id="submitExamBtn"><i class="fa-solid fa-flag-checkered me-2"></i>Submit Exam</button>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="glass-card p-3">
+          <h6 class="font-h fw-bold mb-2"><i class="fa-solid fa-table-cells me-2"></i>Question Palette</h6>
+          <div id="paletteWrap" class="d-flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= RESULT PAGE ================= -->
+<div id="resultPage" class="page">
+  <div class="container py-5">
+    <div class="text-center mb-4">
+      <h2 class="font-h fw-bold"><i class="fa-solid fa-trophy me-2" style="color:var(--accent);"></i>Congratulations!</h2>
+      <p style="color:var(--text-sub);">Here is your exam performance summary</p>
+    </div>
+    <div class="row g-4 align-items-center mb-4">
+      <div class="col-md-5 text-center">
+        <div class="circular-progress" id="circProgress" style="--p:0;">
+          <div class="circular-progress-inner">
+            <div class="stat-num" id="percentText">0%</div>
+            <div class="small" style="color:var(--text-sub);">Score</div>
+          </div>
+        </div>
+        <div class="mt-3"><span class="grade-badge" id="gradeBadge">--</span></div>
+      </div>
+      <div class="col-md-7">
+        <div class="row g-3">
+          <div class="col-6"><div class="stat-box"><div class="stat-num" id="resTotal">0</div><div class="small">Total</div></div></div>
+          <div class="col-6"><div class="stat-box"><div class="stat-num text-success" id="resCorrect">0</div><div class="small">Correct</div></div></div>
+          <div class="col-6"><div class="stat-box"><div class="stat-num text-danger" id="resWrong">0</div><div class="small">Wrong</div></div></div>
+          <div class="col-6"><div class="stat-box"><div class="stat-num text-warning" id="resSkipped">0</div><div class="small">Skipped</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="glass-card p-4 mb-4">
+      <h6 class="font-h fw-bold mb-3"><i class="fa-solid fa-chart-simple me-2"></i>Topic-wise Performance</h6>
+      <div id="topicPerfWrap"></div>
+    </div>
+    <div class="text-center d-flex flex-wrap justify-content-center gap-3">
+      <button class="btn btn-pk" id="reviewAnswersBtn"><i class="fa-solid fa-list-check me-2"></i>Review Answers</button>
+      <button class="btn btn-accent" id="backToDashBtn"><i class="fa-solid fa-house me-2"></i>Back to Dashboard</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= REVIEW PAGE ================= -->
+<div id="reviewPage" class="page">
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4 class="font-h fw-bold"><i class="fa-solid fa-magnifying-glass me-2"></i>Answer Review</h4>
+      <button class="btn btn-pk" id="reviewBackBtn"><i class="fa-solid fa-arrow-left me-2"></i>Back</button>
+    </div>
+    <div id="reviewList"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   PAKISTAN STUDIES MCQ BANK
+   Topics: geo, culture, economy, foreign, present, challenges, heroes
+   ========================================================================= */
+const MCQ_BANK = [];
+function add(topic,q,opts,correctIdx,explain){
+  MCQ_BANK.push({topic,q,opts,correct:correctIdx,explain});
+}
+
+/* ---------------- TOPIC 9: GEOSTRATEGIC IMPORTANCE OF PAKISTAN ---------------- */
+add("geo","Pakistan's geostrategic importance is primarily derived from its location at the confluence of which three major regions?",["South Asia, Central Asia, and the Middle East","East Asia, Europe, and Africa","Southeast Asia, Oceania, and the Pacific","North America, South America, and Europe"],0,"Pakistan sits at the crossroads of South Asia, Central Asia, and the Middle East, giving it unmatched geostrategic significance for trade, energy transit, and regional security.");
+add("geo","Which Pakistani port is the centerpiece of CPEC and provides a direct outlet to the Arabian Sea for Western China?",["Karachi Port","Port Qasim","Gwadar Port","Pasni Port"],2,"Gwadar Port in Balochistan is the flagship CPEC project, offering China's western regions a shorter trade route to the Arabian Sea, bypassing the Strait of Malacca.");
+add("geo","Pakistan shares its longest border with which country?",["India","Afghanistan","Iran","China"],1,"Pakistan's border with Afghanistan, the Durand Line, stretches approximately 2,640 km, making it Pakistan's longest international border.");
+add("geo","The Durand Line, separating Pakistan and Afghanistan, was demarcated in which year?",["1893","1905","1947","1971"],0,"The Durand Line was agreed upon in 1893 between Sir Mortimer Durand and Amir Abdur Rahman Khan of Afghanistan.");
+add("geo","Which strait, located near Pakistan's maritime zone, is a critical global oil transit chokepoint?",["Strait of Hormuz","Strait of Malacca","Bab-el-Mandeb","Bosphorus Strait"],0,"The Strait of Hormuz, close to Pakistan's coastline, is one of the world's most strategic oil transport chokepoints, enhancing Pakistan's maritime significance.");
+add("geo","CPEC is primarily an extension of which broader Chinese global initiative?",["Shanghai Cooperation Organisation","Belt and Road Initiative (BRI)","Regional Comprehensive Economic Partnership","Asia-Pacific Economic Cooperation"],1,"CPEC is a flagship project of China's Belt and Road Initiative (BRI), linking Kashgar in Xinjiang to Gwadar Port.");
+add("geo","Approximately what is the total length of the CPEC route connecting Kashgar to Gwadar?",["1,300 km","3,000 km","5,500 km","8,000 km"],1,"The CPEC corridor spans roughly 3,000 km of highways, railways, and pipelines connecting Kashgar in China to Gwadar in Pakistan.");
+add("geo","Which mountain range forms a natural defense barrier along Pakistan's northern border?",["Aravalli Range","Western Ghats","Karakoram Range","Vindhya Range"],2,"The Karakoram Range, home to K2, forms a formidable natural barrier along Pakistan's northern frontier with China.");
+add("geo","K2, the world's second-highest peak, is located in which Pakistani region?",["Gilgit-Baltistan","Azad Jammu and Kashmir","Khyber Pakhtunkhwa","Balochistan"],0,"K2 (8,611 m) is located in the Karakoram Range within Gilgit-Baltistan, part of Pakistan's strategic northern territory.");
+add("geo","Pakistan's coastline along the Arabian Sea is approximately how long?",["450 km","1,046 km","1,800 km","2,200 km"],1,"Pakistan has a coastline of approximately 1,046 km, shared between Sindh and Balochistan provinces.");
+add("geo","Which energy resource discovered in Balochistan has historically been vital to Pakistan's domestic energy supply?",["Coal","Natural gas at Sui","Crude oil at Daharki","Uranium"],1,"The Sui gas field in Balochistan, discovered in 1952, has long been Pakistan's largest natural gas reserve and a backbone of domestic energy.");
+add("geo","The Thar coalfield, one of the world's largest lignite reserves, is located in which province?",["Punjab","Sindh","Khyber Pakhtunkhwa","Balochistan"],1,"The Thar coalfield in Sindh holds an estimated 175 billion tonnes of lignite coal, a major potential energy resource for Pakistan.");
+add("geo","Which of the following is NOT typically cited as a security/defense dimension challenge linked to Pakistan's geostrategic location?",["Proxy conflicts due to regional rivalries","Border management with Afghanistan","Maritime security in the Arabian Sea","Surplus of skilled IT workforce"],3,"Surplus IT workforce is an economic/human-capital matter, not a security or defense dimension of geostrategic concern.");
+add("geo","Pakistan's strategic depth concept historically referred to its policy considerations regarding which neighboring country?",["Iran","Afghanistan","China","India"],1,"Strategic depth referred to Pakistan's historical security calculus regarding Afghanistan, aiming for a friendly western neighbor in case of conflict with India.");
+add("geo","Which of these is a major energy pipeline project that has been proposed to pass through or near Pakistan's territory?",["IP (Iran-Pakistan) gas pipeline","Baku-Tbilisi-Ceyhan pipeline","Nord Stream pipeline","Trans-Alaska pipeline"],0,"The Iran-Pakistan (IP) gas pipeline, also called the 'Peace Pipeline,' has been proposed to transport Iranian natural gas to Pakistan, though it faces sanctions-related delays.");
+add("geo","The TAPI pipeline project, relevant to Pakistan's energy and strategic interests, connects Turkmenistan to which final destination via Pakistan?",["China","India","Iran","Afghanistan only"],1,"TAPI (Turkmenistan-Afghanistan-Pakistan-India) is a planned gas pipeline intended to carry Central Asian gas through Afghanistan and Pakistan to India.");
+add("geo","Which Pakistani city is the country's principal seaport and economic hub on the Arabian Sea?",["Gwadar","Karachi","Hyderabad","Thatta"],1,"Karachi, Pakistan's largest city, hosts the Karachi Port, the country's busiest and most economically significant port.");
+add("geo","Pakistan's location gives it control over access routes to which landlocked Central Asian region, enhancing its trade significance?",["Caucasus","Central Asian Republics (CARs)","Balkans","Scandinavia"],1,"Pakistan offers the shortest potential trade and energy corridor for the landlocked Central Asian Republics to reach warm-water ports.");
+add("geo","Which of the following best describes a key 'challenge' associated with Pakistan's geostrategic position?",["Abundant freshwater surplus","Being caught between rival regional and global powers","Lack of any international borders","Absence of any natural resources"],1,"Pakistan's location often places it amid competing interests of major powers like the US, China, and regional rivals, creating diplomatic and security challenges.");
+add("geo","CPEC includes investment in which of the following sectors besides infrastructure?",["Energy and Special Economic Zones","Space tourism only","Agriculture subsidies only","None, it is purely military"],0,"CPEC encompasses energy projects, Special Economic Zones (SEZs), infrastructure, and Gwadar port development, not just transport links.");
+add("geo","Which body of water lies to the south of Pakistan, vital for its naval and trade access?",["Bay of Bengal","Arabian Sea","Caspian Sea","Red Sea"],1,"The Arabian Sea borders Pakistan's southern coastline and is central to its naval strategy and maritime trade.");
+add("geo","Pakistan's nuclear capability, first tested in 1998, is often cited as contributing to which aspect of its geostrategic role?",["Cultural diplomacy","Strategic deterrence in South Asia","Agricultural exports","Tourism growth"],1,"Pakistan conducted nuclear tests in Chagai, Balochistan in 1998, establishing a deterrence posture against regional security threats, especially vis-à-vis India.");
+add("geo","Which international organization has Pakistan used to promote regional connectivity given its central geographic position?",["Economic Cooperation Organization (ECO)","European Union","African Union","Mercosur"],0,"Pakistan is a founding member of the Economic Cooperation Organization (ECO), formed to promote regional connectivity among Pakistan, Iran, and Turkey, later expanded to Central Asian states.");
+add("geo","Concerns over 'debt-trap diplomacy' are most frequently raised internationally regarding which Pakistani initiative?",["Benazir Income Support Programme","CPEC financing arrangements","Pakistan's IT exports","Pakistan's wheat subsidy program"],1,"Critics have raised concerns that heavy Chinese loans under CPEC could create unsustainable debt burdens for Pakistan, a frequently debated geostrategic concern.");
+add("geo","Gilgit-Baltistan's geostrategic value largely stems from its shared border with which country, vital to CPEC?",["China","Iran","India","Tajikistan"],0,"Gilgit-Baltistan borders China's Xinjiang region via the Khunjerab Pass, making it the literal gateway for CPEC's overland route.");
+add("geo","The Khunjerab Pass, a key entry point for CPEC trade with China, is one of the highest paved border crossings in the world, located on which highway?",["Grand Trunk Road","Karakoram Highway","Indus Highway","Makran Coastal Highway"],1,"The Karakoram Highway (KKH), linking Pakistan and China via the Khunjerab Pass, is a vital artery of CPEC and one of the highest paved roads globally.");
+add("geo","Why is Pakistan considered economically significant for regional trade beyond South Asia?",["It is the only producer of rare earth metals","It can serve as a transit corridor linking Central Asia, China, and the Arabian Sea","It has no land borders","It is the largest exporter of crude oil"],1,"Pakistan's geography allows it to function as a transit and trade corridor connecting landlocked Central Asia and Western China to global sea lanes.");
+add("geo","Which natural resource concern is increasingly tied to Pakistan's geostrategic and economic vulnerability?",["Surplus of fresh water","Water scarcity from glacial and Indus River dependence","Excess of unused arable land","Overabundance of forest cover"],1,"Pakistan's heavy reliance on the Indus River system and glacial melt makes water scarcity a growing strategic and economic vulnerability.");
+add("geo","Balochistan's geostrategic significance is heightened due to its proximity to which major regional waterway chokepoint?",["Strait of Hormuz","Suez Canal","Panama Canal","English Channel"],0,"Balochistan's coastline lies close to the Strait of Hormuz, through which a significant share of the world's oil supply transits.");
+
+/* ---------------- TOPIC 10: CULTURE OF PAKISTAN ---------------- */
+add("culture","Pakistan's indigenous culture is most heavily shaped by which ancient civilization that flourished in the Indus Valley?",["Mesopotamian civilization","Indus Valley Civilization (Mohenjo-daro and Harappa)","Mayan civilization","Aegean civilization"],1,"The Indus Valley Civilization, with sites like Mohenjo-daro and Harappa, forms the deep historical bedrock of indigenous culture in present-day Pakistan.");
+add("culture","Mohenjo-daro, a UNESCO World Heritage Site reflecting Pakistan's indigenous culture, is located in which province?",["Punjab","Sindh","Balochistan","Khyber Pakhtunkhwa"],1,"Mohenjo-daro, one of the largest Bronze Age cities, is located in Larkana district, Sindh, and is a UNESCO World Heritage Site.");
+add("culture","Which of the following is widely regarded as Pakistan's national language?",["Punjabi","Urdu","Sindhi","Pashto"],1,"Urdu is constitutionally designated as Pakistan's national language, serving as a lingua franca despite being the mother tongue of a minority.");
+add("culture","Pakistan's English is recognized alongside Urdu as an official language primarily for which purpose?",["Religious ceremonies","Government, judiciary, and higher education","Folk music only","Agricultural practices"],1,"English continues to serve as an official language used in government administration, courts, and higher education in Pakistan.");
+add("culture","Which language has the largest number of native speakers in Pakistan?",["Urdu","Punjabi","Sindhi","Balochi"],1,"Punjabi is the most widely spoken native language in Pakistan, primarily concentrated in Punjab province.");
+add("culture","The truck art tradition, a vibrant element of Pakistan's material culture, is most famously associated with which city?",["Karachi","Quetta","Multan","Skardu"],0,"Karachi is especially renowned for its elaborately decorated truck art, a distinctive folk art form blending color, calligraphy, and ornamentation.");
+add("culture","Ajrak, a traditional block-printed cloth, is most strongly associated with the cultural identity of which province?",["Sindh","Punjab","Balochistan","Khyber Pakhtunkhwa"],0,"Ajrak is an iconic textile of Sindhi culture, symbolizing Sindh's heritage and worn during festivals and ceremonies.");
+add("culture","Which musical instrument is traditionally central to Sufi qawwali performances in Pakistan?",["Sitar","Tabla and harmonium","Violin","Flute exclusively"],1,"Qawwali, a devotional Sufi music genre, is traditionally accompanied by tabla and harmonium along with vocal chorus singing.");
+add("culture","Nusrat Fateh Ali Khan, an internationally celebrated Pakistani musician, is best known for popularizing which musical genre?",["Qawwali","Classical ghazal only","Rock and roll","Folk bhangra exclusively"],0,"Nusrat Fateh Ali Khan brought Sufi qawwali to global audiences, blending traditional devotional music with innovative fusion styles.");
+add("culture","Which festival, celebrating the arrival of spring, is traditionally marked by kite-flying in parts of Punjab?",["Basant","Eid-ul-Fitr","Shab-e-Barat","Nowruz"],0,"Basant is a traditional spring festival historically associated with kite-flying celebrations, particularly in Lahore.");
+add("culture","Cultural diversity in Pakistan is reflected in its recognition of several regional languages; which of these is NOT one of Pakistan's major regional languages?",["Pashto","Balochi","Saraiki","Mandarin"],3,"Mandarin is a Chinese language, not an indigenous regional language of Pakistan, unlike Pashto, Balochi, and Saraiki.");
+add("culture","The Kalash people, known for their distinct pre-Islamic culture and festivals, reside in which valley?",["Hunza Valley","Kalash Valleys of Chitral","Neelum Valley","Swat Valley"],1,"The Kalash people live in the Kalash Valleys of Chitral, Khyber Pakhtunkhwa, maintaining a unique culture distinct from the broader Muslim-majority population.");
+add("culture","Which of the following best exemplifies Pakistan's non-material culture?",["Traditional Multani pottery","Khaddar fabric weaving","Customs of hospitality and respect for elders","Wood carving of Swat"],2,"Non-material culture includes values, customs, beliefs, and social norms such as hospitality and respect for elders, distinct from tangible artifacts.");
+add("culture","Lok Virsa (National Institute of Folk and Traditional Heritage) primarily aims to preserve which aspect of Pakistani culture?",["Folk and traditional heritage","Modern digital media","Corporate business practices","International diplomacy"],0,"Lok Virsa is dedicated to documenting, preserving, and promoting Pakistan's diverse folk and traditional cultural heritage.");
+add("culture","Globalization's impact on Pakistani culture is most evident in which modern trend?",["Decline of all local languages","Growth of fusion music, fast fashion, and digital media consumption","Total isolation from global trends","Elimination of traditional festivals"],1,"Globalization has introduced fusion music genres, Western fashion influences, and widespread digital/social media consumption alongside traditional practices.");
+add("culture","Which UNESCO-listed site in Lahore reflects Mughal-era architectural and cultural heritage?",["Lahore Fort and Shalimar Gardens","Rohtas Fort","Makli Necropolis","Taxila ruins"],0,"The Lahore Fort and Shalimar Gardens are UNESCO World Heritage Sites showcasing Mughal architectural grandeur and cultural legacy.");
+add("culture","Sufi shrines, such as that of Shah Abdul Latif Bhittai, play a significant cultural role primarily because they promote which value?",["Religious tolerance and mystic spirituality","Strict sectarianism","Military discipline","Industrial development"],0,"Sufi shrines historically promote inclusive spirituality, devotional music, and tolerance, shaping Pakistan's syncretic cultural fabric.");
+add("culture","Which of these is considered Pakistan's national dress?",["Shalwar Kameez","Sari","Kurta-pajama exclusively for women","Lungi only"],0,"Shalwar Kameez is recognized as the national dress of Pakistan, worn by both men and women across regions with local variations.");
+add("culture","The traditional embroidery style 'Phulkari' is most closely associated with which region's material culture?",["Punjab","Gilgit-Baltistan","Balochistan","Sindh"],0,"Phulkari is a vibrant embroidery tradition originating from Punjab, often used in shawls, dupattas, and ceremonial garments.");
+add("culture","Eid Milad-un-Nabi, celebrating the birth of Prophet Muhammad (PBUH), is observed in which Islamic month?",["Ramadan","Rabi-ul-Awwal","Shawwal","Muharram"],1,"Eid Milad-un-Nabi is celebrated on the 12th of Rabi-ul-Awwal, marking the birth of the Holy Prophet (PBUH).");
+add("culture","Modern trends in Pakistani culture include increasing influence of which medium on youth cultural expression?",["Print newspapers exclusively","Social media and streaming platforms","Manual letter writing","Telegraph communication"],1,"Social media and digital streaming platforms have become dominant influences shaping youth culture, fashion, and entertainment consumption in modern Pakistan.");
+add("culture","The Shandur Polo Festival, a unique cultural event, is held at the world's highest polo ground located between which two regions?",["Chitral and Gilgit","Lahore and Multan","Karachi and Hyderabad","Quetta and Sibi"],0,"The Shandur Pass hosts the annual polo festival between teams from Chitral and Gilgit, a celebrated cultural and sporting tradition.");
+add("culture","Which classical dance/folk performance is traditionally associated with Khyber Pakhtunkhwa's Pashtun cultural identity?",["Attan","Bhangra","Luddi","Sammi"],0,"Attan is a traditional energetic group dance performed by Pashtuns, symbolizing unity, celebration, and cultural pride.");
+add("culture","The 'Sibi Mela,' a cultural and agricultural festival, is held annually in which province?",["Balochistan","Sindh","Punjab","Khyber Pakhtunkhwa"],0,"The Sibi Mela is a historic cultural and agricultural fair held in Sibi, Balochistan, showcasing livestock, crafts, and folk traditions.");
+add("culture","Material culture in Pakistan includes architectural styles; which is a hallmark feature of traditional Sindhi and Punjabi havelis?",["Glass skyscraper facades","Intricate wooden balconies (jharokas) and frescoes","Concrete brutalist design","Steel-frame minimalism"],1,"Traditional havelis in Sindh and Punjab often feature ornately carved wooden balconies (jharokas) and decorative frescoes reflecting regional craftsmanship.");
+add("culture","Which annual cultural event in Multan celebrates the city's heritage as the 'City of Saints'?",["Multan Mango and Handicraft Festival","Karachi Literature Festival","Lahore Fashion Week","Islamabad Tech Summit"],0,"Multan, known for its Sufi shrines and handicrafts, hosts cultural festivals celebrating its mango produce and traditional crafts heritage.");
+add("culture","Globalization's challenge to indigenous culture is often described in academic discourse as risking which outcome?",["Cultural homogenization eroding local traditions","Complete elimination of all religions","Mandatory adoption of a single global language","End of international trade"],0,"Scholars often warn that globalization can lead to cultural homogenization, where local traditions and languages risk being overshadowed by dominant global culture.");
+add("culture","The 'Lok Mela' organized in Islamabad primarily showcases which aspect of Pakistani heritage?",["Industrial machinery","Folk crafts, music, and cultural diversity of all provinces","Stock market trends","Military hardware"],1,"The Lok Mela (Folk Festival) in Islamabad brings together artisans, musicians, and performers from across Pakistan to showcase regional folk heritage.");
+add("culture","Which of these best reflects 'cultural diversity' rather than a single unifying culture in Pakistan?",["A single national language with no regional variation","Coexistence of Punjabi, Sindhi, Pashtun, Baloch, and other ethnic-linguistic identities","Uniform dress code mandated by law","Absence of regional festivals"],1,"Pakistan's cultural diversity is exemplified by its multiple ethnic-linguistic groups, each contributing distinct traditions, languages, and customs.");
+
+/* ---------------- TOPIC 11: PAKISTAN ECONOMY ---------------- */
+add("economy","Agriculture in Pakistan contributes roughly what share to the national GDP, despite a declining trend over decades?",["Around 2-3%","Around 18-20%","Around 50%","Around 75%"],1,"Agriculture contributes approximately 18-20% of Pakistan's GDP and employs a large share of the labor force, though its relative share has declined over time.");
+add("economy","Which crop is historically known as Pakistan's most important cash crop and major export earner?",["Wheat","Cotton","Maize","Barley"],1,"Cotton has traditionally been Pakistan's key cash crop, underpinning its large textile industry and export earnings.");
+add("economy","The textile sector contributes approximately what share of Pakistan's total export earnings?",["Less than 5%","About 10%","Roughly 55-60%","Nearly 90%"],2,"The textile sector remains Pakistan's largest export industry, contributing approximately 55-60% of total export earnings in recent years.");
+add("economy","Pakistan's currency, the Rupee, is regulated by which central institution?",["Ministry of Finance","State Bank of Pakistan (SBP)","National Bank of Pakistan","Securities and Exchange Commission of Pakistan"],1,"The State Bank of Pakistan (SBP), established in 1948, serves as the central bank responsible for monetary policy and currency regulation.");
+add("economy","Which of the following best describes Pakistan's recurring energy crisis challenge?",["Surplus electricity with no demand","Gap between energy demand and supply causing load-shedding","Complete absence of any power generation","Excess of renewable-only energy sources"],1,"Pakistan has faced a persistent energy crisis characterized by a demand-supply gap, leading to circular debt and frequent load-shedding.");
+add("economy","'Circular debt' in Pakistan's energy sector primarily refers to which phenomenon?",["Debt owed to foreign tourists","Accumulated unpaid dues among power producers, distributors, and government entities","Loans given to students","Agricultural microfinance debt"],1,"Circular debt arises from a chain of unpaid liabilities between power generation companies, distribution companies, and the government, straining the energy sector's finances.");
+add("economy","Water scarcity in Pakistan is significantly linked to over-reliance on which river system for irrigation and consumption?",["Nile River system","Indus River system","Mekong River system","Amazon River system"],1,"Pakistan's agriculture and water supply depend heavily on the Indus River system, making it highly vulnerable to flow variability and climate change.");
+add("economy","Which international body has historically been a major source of structural adjustment loans for Pakistan's economy?",["International Monetary Fund (IMF)","World Trade Organization","OPEC","NATO"],0,"Pakistan has frequently turned to the IMF for balance-of-payments support and structural reform loans throughout its economic history.");
+add("economy","Pakistan's services sector, the largest contributor to GDP, includes which of the following sub-sectors?",["Only mining","Banking, telecommunications, and IT services","Only subsistence farming","Only handicrafts"],1,"The services sector, contributing over half of GDP, encompasses banking, telecom, IT, retail, transport, and other service-based industries.");
+add("economy","Climate change has intensified which recurring natural disaster that severely impacts Pakistan's agriculture and economy?",["Volcanic eruptions","Major flooding, such as the 2010 and 2022 floods","Earthquakes exclusively","Tsunamis"],1,"Pakistan has experienced devastating floods, notably in 2010 and 2022, exacerbated by climate change, causing massive agricultural and economic losses.");
+add("economy","Food security concerns in Pakistan are often linked to which combination of factors?",["Excess food production with no population growth","Population growth, water scarcity, and climate-related crop losses","Total absence of agriculture","Overabundance of arable land with no constraints"],1,"Rising population, dwindling water resources, and climate-induced crop damage collectively threaten Pakistan's food security.");
+add("economy","Which of the following industries, alongside textiles, represents a significant part of Pakistan's industrial sector?",["Cement and steel","Aerospace manufacturing exclusively","Semiconductor fabrication exclusively","Shipbuilding exclusively"],0,"Cement, steel, fertilizer, and food processing industries form important pillars of Pakistan's industrial base alongside the dominant textile sector.");
+add("economy","Pakistan's remittances from overseas workers, an important source of foreign exchange, primarily originate from workers based in which region?",["Gulf Cooperation Council (GCC) countries","South America","Antarctica","Eastern Europe exclusively"],0,"A significant share of Pakistan's remittances comes from overseas Pakistani workers in Gulf countries such as Saudi Arabia and the UAE.");
+add("economy","Which of these represents an 'economic opportunity' frequently cited for Pakistan's future growth prospects?",["Declining youth population","A large young workforce ('youth bulge') and growing IT/freelancing sector","Total absence of natural resources","Shrinking consumer market"],1,"Pakistan's large youth population and expanding IT/freelancing sector are frequently cited as key opportunities for future economic growth.");
+add("economy","The State Bank of Pakistan was established in which year?",["1947","1948","1956","1971"],1,"The State Bank of Pakistan commenced operations on July 1, 1948, becoming the country's central monetary authority.");
+add("economy","Which economic indicator measures the value of all goods and services produced within Pakistan in a given year?",["Consumer Price Index (CPI)","Gross Domestic Product (GDP)","Balance of Payments","Exchange Rate"],1,"GDP (Gross Domestic Product) measures the total value of goods and services produced domestically within a specific period.");
+add("economy","Pakistan's major import commodities typically include which of the following?",["Petroleum products and machinery","Only handicrafts","Only fresh fruit","Only books"],0,"Petroleum products, machinery, and edible oil are among Pakistan's largest import categories, contributing to persistent trade deficits.");
+add("economy","Which government social safety net program in Pakistan primarily targets poverty alleviation for low-income households?",["Benazir Income Support Programme (BISP) / Benazir Kafaalat","National Highway Authority Fund","Export Refinance Scheme","Capital Gains Tax Fund"],0,"BISP, later restructured as Benazir Kafaalat, is a key cash-transfer social safety net program targeting Pakistan's poorest households.");
+add("economy","Pakistan's agriculture sector relies heavily on which large-scale irrigation network, one of the world's largest contiguous systems?",["Indus Basin Irrigation System","Nile Delta Irrigation System","Mekong Irrigation Network","Murray-Darling Basin System"],0,"The Indus Basin Irrigation System is among the largest contiguous irrigation networks globally, central to Pakistan's agricultural output.");
+add("economy","Brain drain, an economic and social challenge, refers to which phenomenon?",["Loss of agricultural land fertility","Emigration of skilled professionals seeking better opportunities abroad","Decline in literacy rates","Depletion of mineral resources"],1,"Brain drain describes the emigration of educated and skilled Pakistani professionals abroad, depriving the domestic economy of valuable human capital.");
+add("economy","Which sector has seen rapid recent growth in Pakistan due to global outsourcing trends and digital connectivity?",["Coal mining","Freelancing and IT/software exports","Traditional handloom weaving","Subsistence fishing"],1,"Pakistan's IT exports and freelancing sector have grown substantially, driven by global digital outsourcing and a young, tech-savvy workforce.");
+add("economy","Pakistan's economic prospects are often linked to CPEC-related industrial zones known as what?",["Special Economic Zones (SEZs)","Free Trade Unions","National Reserve Parks","Diplomatic Enclaves"],0,"CPEC includes the development of Special Economic Zones (SEZs) intended to attract industrial investment and boost exports.");
+add("economy","Which of the following best explains Pakistan's chronic trade deficit?",["Imports consistently exceeding exports","Exports always exceeding imports","Complete absence of foreign trade","Equal imports and exports every year"],0,"Pakistan has persistently imported more than it exports, resulting in a chronic trade deficit that pressures foreign exchange reserves.");
+add("economy","Pakistan's National Food Security Policy primarily aims to address which long-term concern?",["Excess food surplus management","Ensuring availability, access, and utilization of food amid population growth","Banning agricultural exports","Eliminating all subsidies on food"],1,"The policy framework targets sustainable food availability and access for a growing population amid climate and resource constraints.");
+add("economy","Glacial melt accelerated by climate change poses a long-term risk to which vital Pakistani economic resource?",["Software exports","Freshwater supply for the Indus river system","Cotton textile machinery","Banking sector liquidity"],1,"Accelerated glacial melt threatens the long-term stability of Indus River water flows, jeopardizing irrigation, agriculture, and hydropower generation.");
+add("economy","Pakistan's services sector contributes approximately what share to national GDP?",["Around 10%","Around 20%","Over 50%","Around 95%"],2,"The services sector, including finance, telecom, transport, and retail, contributes over half of Pakistan's GDP, the largest of the three sectors.");
+add("economy","Which crisis intensifies Pakistan's industrial sector's production costs and competitiveness, alongside the energy crisis?",["Excess of skilled labor","High input costs due to currency depreciation and inflation","Zero taxation policy","Surplus of cheap electricity"],1,"Currency depreciation and persistent inflation raise input costs for Pakistani industries, undermining competitiveness in international markets.");
+add("economy","Pakistan's mineral resources include which of the following significant deposits found in Balochistan?",["Reko Diq copper-gold reserves","Diamond mines","Uranium-only deposits","Bauxite exclusively"],0,"The Reko Diq deposit in Balochistan holds substantial copper and gold reserves, considered among the world's largest underdeveloped mining prospects.");
+
+/* ---------------- TOPIC 12: FOREIGN POLICY AND FOREIGN RELATIONS ---------------- */
+add("foreign","Foreign policy is best defined as a country's strategy for managing relations with other states in pursuit of which objective?",["Domestic agricultural subsidies","Its national interests on the international stage","Internal judicial reform only","Local municipal governance"],1,"Foreign policy refers to the principles and strategies a state adopts to manage external relations and safeguard its national interests internationally.");
+add("foreign","Which principle has historically been a core determinant of Pakistan's foreign policy since independence?",["Total isolationism","Islamic solidarity and regional security concerns","Avoidance of all alliances","Exclusive focus on Antarctica relations"],1,"Islamic solidarity with the Muslim world and security concerns, particularly regarding India, have been enduring determinants shaping Pakistan's foreign policy.");
+add("foreign","Pakistan joined SEATO and CENTO during the Cold War primarily to achieve which foreign policy objective?",["Promote non-alignment","Secure military and economic support against perceived security threats","Strengthen ties with the Soviet Union","Avoid all foreign alliances"],1,"Pakistan joined SEATO (1954) and CENTO (1955) to gain military and economic assistance, primarily from the United States, against regional security threats.");
+add("foreign","Which determinant of foreign policy refers to a country's geographic position influencing its diplomatic priorities?",["Geopolitical/geographic factor","Literacy rate","Currency exchange rate","Sports diplomacy"],0,"Geographic location is a fundamental determinant of foreign policy, shaping a country's strategic priorities, alliances, and security concerns.");
+add("foreign","Pakistan's relationship with China is often described using which term, reflecting its depth and consistency?",["Fair-weather friendship","All-weather strategic partnership","Purely economic alliance","Temporary ceasefire arrangement"],1,"Pakistan-China relations are frequently described as an 'all-weather friendship,' denoting a consistently strong and strategic partnership across decades.");
+add("foreign","Which year marked the establishment of formal diplomatic relations between Pakistan and China?",["1947","1951","1965","1979"],1,"Pakistan and China established formal diplomatic relations in 1951, laying the foundation for their enduring strategic partnership.");
+add("foreign","Pakistan-USA relations have historically fluctuated based on which recurring factor?",["Cooperation during Cold War and War on Terror, interspersed with periods of estrangement","Permanent uninterrupted alliance with no tension","Total absence of any diplomatic contact","Exclusive trade-only relationship with no security dimension"],0,"US-Pakistan relations have oscillated between close strategic cooperation, such as during the Cold War and post-9/11 War on Terror, and periods of mistrust and estrangement.");
+add("foreign","Pakistan's relationship with Russia historically was shaped by Cold War alignments; Pakistan was generally seen as aligned with which bloc?",["Soviet-led bloc","US-led Western bloc","Non-Aligned Movement exclusively, with no Western ties","Chinese-led bloc exclusively"],1,"During the Cold War, Pakistan was largely aligned with the US-led Western bloc, which contributed to historically cautious relations with the Soviet Union/Russia.");
+add("foreign","Pakistan-Afghanistan relations have been significantly affected by which long-standing border dispute?",["Durand Line dispute","Radcliffe Line dispute","Line of Control dispute","McMahon Line dispute"],0,"Afghanistan has historically disputed the legitimacy of the Durand Line as the international border, creating periodic tension with Pakistan.");
+add("foreign","Pakistan-Iran relations are shaped by shared religious, cultural, and economic ties, including cooperation on which proposed project?",["Iran-Pakistan (IP) gas pipeline","Trans-Atlantic railway","Joint space station","Shared currency union"],0,"The Iran-Pakistan gas pipeline project reflects efforts to deepen energy cooperation between the two neighboring countries, despite sanctions-related obstacles.");
+add("foreign","Pakistan-India relations have been dominated since 1947 primarily by which unresolved dispute?",["Trade tariffs on textiles","The Kashmir dispute","Cricket scheduling disagreements","Telecommunication spectrum allocation"],1,"The Kashmir dispute remains the central and most persistent unresolved issue dominating Pakistan-India bilateral relations since partition in 1947.");
+add("foreign","Pakistan and India have fought how many major wars since independence, as commonly cited (1948, 1965, 1971, and 1999 Kargil)?",["Two","Three full-scale wars plus the Kargil conflict","Five","None"],1,"Pakistan and India have fought wars in 1948, 1965, and 1971, along with the 1999 Kargil conflict, reflecting the persistent hostility rooted in the Kashmir dispute.");
+add("foreign","SAARC, a regional organization Pakistan is part of, stands for which of the following?",["South Asian Association for Regional Cooperation","Southeast Asian Regional Council","South American Association of Regional Commerce","Strategic Alliance for Asian Reconstruction and Cooperation"],0,"SAARC (South Asian Association for Regional Cooperation), founded in 1985, includes Pakistan among its member states promoting regional cooperation.");
+add("foreign","The Organisation of Islamic Cooperation (OIC), of which Pakistan is a founding member, primarily promotes which objective?",["Solidarity and cooperation among Muslim-majority states","European economic integration","Pacific trade liberalization","Antarctic resource management"],0,"The OIC was established to foster solidarity, cooperation, and represent the collective interests of the Muslim world, with Pakistan as a founding member.");
+add("foreign","The Shanghai Cooperation Organisation (SCO), which Pakistan joined as a full member in 2017, primarily focuses on which area of cooperation?",["Regional security, economic, and counter-terrorism cooperation","Exclusive sports diplomacy","European Union accession","Maritime piracy in the Pacific only"],0,"The SCO focuses on regional security, economic cooperation, and counter-terrorism among member states, with Pakistan becoming a full member in 2017.");
+add("foreign","Pakistan has been a member of the United Nations since which year?",["1945","1947","1948","1971"],1,"Pakistan became a member of the United Nations in 1947, shortly after gaining independence.");
+add("foreign","Pakistan has historically contributed significantly to which United Nations activity, reflecting its global engagement?",["UN Peacekeeping missions","UN Headquarters relocation","UN currency issuance","UN Secretariat staffing exclusively from one province"],0,"Pakistan has been one of the largest contributors of troops to United Nations peacekeeping missions worldwide.");
+add("foreign","Which of the following best describes a core 'principle' often cited in Pakistan's foreign policy framework?",["Promotion of regional peace, sovereign equality, and non-interference","Total disregard for international law","Permanent military occupation of neighboring states","Exclusive reliance on a single ally with no diversification"],0,"Pakistan's foreign policy principles emphasize sovereign equality, non-interference in internal affairs, and promotion of regional and global peace.");
+add("foreign","Pakistan's foreign policy toward the Muslim world has historically emphasized which form of solidarity?",["Religious, cultural, and economic cooperation with Muslim-majority states","Military confrontation with all Muslim states","Complete diplomatic isolation from the Muslim world","Exclusive alliance with non-Muslim states only"],0,"Pakistan has consistently emphasized religious and cultural solidarity with the broader Muslim world as a key foreign policy pillar.");
+add("foreign","The historical background of Pakistan's foreign policy is deeply rooted in which formative experience?",["Partition of 1947 and subsequent security concerns with India","Colonial relations with France","Membership in the European Union","Pacific island alliances"],0,"The 1947 partition and resulting tensions with India fundamentally shaped Pakistan's early foreign policy orientation toward security and alliance-seeking.");
+add("foreign","Pakistan's relations with neighbouring countries are shaped significantly by shared borders with which set of states?",["India, Afghanistan, Iran, and China","Russia, Turkey, and Egypt","Nepal, Bhutan, and Myanmar","Saudi Arabia and Qatar only"],0,"Pakistan's immediate neighbors—India, Afghanistan, Iran, and China—form the core focus of its regional foreign policy considerations.");
+add("foreign","Which determinant of foreign policy relates to internal political stability and governance affecting external relations?",["Domestic/internal political determinant","Astronomical determinant","Meteorological determinant","Architectural determinant"],0,"Domestic political stability and governance significantly influence a state's capacity to pursue consistent and effective foreign policy.");
+add("foreign","Pakistan's nuclear program has been a significant factor in its foreign relations, particularly affecting ties with which country regarding non-proliferation concerns?",["United States","Brazil","South Africa","Switzerland"],0,"Pakistan's nuclear weapons program has been a recurring point of friction and negotiation in its relationship with the United States over non-proliferation concerns.");
+add("foreign","Pakistan's diplomatic engagement with Afghanistan has frequently centered on which security-related concern?",["Cross-border terrorism and militant safe havens","Maritime trade disputes","Telecommunications satellite allocation","Olympic hosting rights"],0,"Cross-border militancy and concerns over safe havens for armed groups have been persistent and central issues in Pakistan-Afghanistan relations.");
+add("foreign","Pakistan's foreign policy toward the United States during the 1980s was significantly shaped by cooperation against which conflict?",["Soviet invasion of Afghanistan","Vietnam War","Korean War","Falklands War"],0,"Pakistan served as a frontline state supporting the US-backed Afghan resistance against the Soviet invasion of Afghanistan during the 1980s.");
+add("foreign","Pakistan's engagement with Russia has seen relative improvement in recent decades, particularly in which area of cooperation?",["Energy and limited defense cooperation","Joint colonization of Antarctica","Currency unification","Shared embassy buildings worldwide"],0,"In recent years, Pakistan and Russia have explored expanded cooperation in energy projects and limited defense-related engagement.");
+add("foreign","Pakistan's stance within SAARC has often been complicated due to bilateral tensions with which fellow member state?",["India","Bhutan","Maldives","Sri Lanka"],0,"Persistent tensions between Pakistan and India have repeatedly hampered the effectiveness and summit activity of SAARC as a regional body.");
+
+/* ---------------- TOPIC 13: PAKISTAN AT PRESENT TIMES ---------------- */
+add("present","Pakistan's social structure is traditionally characterized by which dominant kinship-based system, especially in rural areas?",["Nuclear-only family units with no extended ties","Extended family and tribal/biradari (clan) affiliations","Complete absence of family structures","Strictly matriarchal corporate structures"],1,"Pakistani society, particularly in rural regions, is strongly shaped by extended family networks and biradari (clan/kinship) affiliations influencing social and political life.");
+add("present","Which of the following best describes Pakistan's ethnic composition?",["A single homogenous ethnic group","Multiple major ethnic groups including Punjabi, Pashtun, Sindhi, Baloch, and Muhajir","Only two ethnic groups","No distinguishable ethnic groups"],1,"Pakistan's population comprises several major ethnic groups—Punjabi, Pashtun, Sindhi, Baloch, Muhajir, and others—each with distinct linguistic and cultural identities.");
+add("present","Pakistan's social structure has historically been influenced by which land-based social hierarchy in rural Punjab and Sindh?",["Feudal/landlord (zamindari) system","Pure communal ownership with no hierarchy","Strict caste-free egalitarian model","Corporate shareholder model"],0,"The feudal or zamindari system, where large landholdings concentrate social and political power among landlords, has historically shaped rural social structure.");
+add("present","Urbanization trends in present-day Pakistan are most associated with growth of which type of settlement?",["Decline of all cities","Rapid growth of mega-cities like Karachi and Lahore","Complete ruralization","No demographic change at all"],1,"Pakistan has witnessed rapid urbanization, with mega-cities such as Karachi and Lahore experiencing substantial population growth and infrastructure strain.");
+add("present","Which demographic trend poses both an opportunity and a challenge for Pakistan's future outlook?",["A rapidly aging population with declining youth","A large and growing youth population ('youth bulge')","Total population decline","Zero population growth for decades"],1,"Pakistan's substantial youth population represents both a potential economic asset (if employed productively) and a challenge (if underemployed or undereducated).");
+add("present","Pakistan's society is often described as having strong elements of which of the following alongside modern institutions?",["Strictly secular Western-style governance with no religious influence","Traditional, tribal, and religious values coexisting with modern institutions","Complete absence of any traditional customs","Exclusive reliance on ancient legal codes with no modern law"],1,"Pakistani society blends traditional, tribal, and religious values with modern political, legal, and economic institutions, creating a complex social fabric.");
+add("present","Ethnic tensions in Pakistan's present-day social and political landscape have historically been most prominent in which province regarding nationalist movements?",["Punjab","Balochistan","Azad Jammu and Kashmir","Gilgit-Baltistan"],1,"Balochistan has experienced recurring nationalist and separatist movements rooted in grievances over resource distribution, autonomy, and development.");
+add("present","Which factor significantly shapes Pakistan's future outlook in terms of human capital development?",["Investment in education and skill development","Complete neglect of demographic planning","Total absence of higher education institutions","Banning all vocational training"],0,"Long-term prospects for Pakistan depend heavily on investments in education, technical skills, and human capital development to harness its youth population.");
+add("present","Pakistan's social structure includes a significant 'Muhajir' community whose identity is rooted in which historical event?",["Migration from India during the 1947 partition","Ancient indigenous settlement predating Islam","Migration from Central Asia in the 19th century","Colonial-era British settlers"],0,"The Muhajir community in Pakistan, concentrated notably in urban Sindh, traces its identity to migration from India following the 1947 partition.");
+add("present","Which social challenge is frequently linked to rapid, unplanned urban growth in Pakistani cities?",["Surplus housing with no demand","Strain on infrastructure, housing shortages, and informal settlements (katchi abadis)","Complete absence of any urban population","Zero traffic congestion"],1,"Rapid and often unplanned urbanization has led to housing shortages, informal settlements, and significant strain on urban infrastructure and services.");
+add("present","Pakistan's future outlook is frequently tied to its potential role in regional connectivity, largely centered on which initiative?",["China-Pakistan Economic Corridor (CPEC)","European single market accession","NAFTA membership","Pacific Islands Forum"],0,"CPEC is widely viewed as central to Pakistan's future economic outlook, given its potential to boost infrastructure, trade, and regional connectivity.");
+add("present","Gender dynamics within Pakistan's social structure show notable variation between which two broad settings?",["Urban and rural areas","Northern and southern hemispheres","Coastal and landlocked countries","Ancient and medieval eras"],0,"Gender roles, access to education, and workforce participation in Pakistan often differ markedly between urban and rural social contexts.");
+add("present","Sectarian and ethnic diversity in Pakistan's present society necessitates which governance approach to maintain national cohesion?",["Forced assimilation eliminating all distinct identities","Inclusive policies recognizing provincial autonomy and diverse identities","Complete centralization with no provincial role","Exclusion of minority groups from governance"],1,"Maintaining national cohesion amid Pakistan's ethnic and sectarian diversity is often linked to inclusive governance recognizing provincial autonomy and identity.");
+add("present","Which of the following is considered a key social structure challenge tied to gender in present-day Pakistan?",["Gender gaps in education and workforce participation","Complete gender parity already achieved nationwide","Absence of any gender-related policy discussion","Total ban on women's education historically enforced everywhere"],0,"Despite progress, persistent gender gaps in education access and workforce participation remain a recognized social challenge in present-day Pakistan.");
+add("present","Pakistan's 18th Constitutional Amendment, relevant to its present social and political structure, primarily strengthened which governance feature?",["Provincial autonomy","Monarchy","Single-party rule","Military-only governance"],0,"The 18th Amendment (2010) significantly enhanced provincial autonomy, devolving greater administrative and fiscal powers to the provinces.");
+
+/* ---------------- TOPIC 14: CONTEMPORARY CHALLENGES ---------------- */
+add("challenges","Which of the following is widely recognized as a major contemporary challenge to Pakistan's education sector?",["Universal 100% literacy already achieved","Low literacy rates, out-of-school children, and inadequate funding","Excess of qualified teachers with no shortage","Complete absence of any educational institutions"],1,"Pakistan continues to face challenges including a sizable out-of-school children population, low literacy rates in some regions, and insufficient education funding.");
+add("challenges","Pakistan's literacy rate, while improving, remains a contemporary challenge particularly affecting which demographic disproportionately?",["Urban males exclusively","Rural populations and women","Only government employees","Foreign nationals residing in Pakistan"],1,"Literacy gaps disproportionately affect rural populations and women, reflecting persistent disparities in access to quality education.");
+add("challenges","Terrorism as a contemporary challenge in Pakistan escalated notably following which broader regional conflict?",["The Soviet invasion of Afghanistan and subsequent instability","World War II","The Korean War","The Falklands conflict"],0,"Instability stemming from the Soviet invasion of Afghanistan and subsequent conflicts contributed to the rise of militancy affecting Pakistan's security landscape.");
+add("challenges","The Tehreek-e-Taliban Pakistan (TTP) is most accurately described as which type of contemporary security threat?",["A legitimate registered political party","A militant extremist group engaged in insurgency against the Pakistani state","A government-sponsored peacekeeping force","An international sporting federation"],1,"TTP is a militant extremist organization that has conducted insurgent and terrorist activities against the Pakistani state and civilians.");
+add("challenges","Which major Pakistani military operation targeted militant strongholds in North Waziristan starting in 2014?",["Operation Zarb-e-Azb","Operation Gibraltar","Operation Grand Slam","Operation Searchlight"],0,"Operation Zarb-e-Azb, launched in June 2014, targeted militant sanctuaries in North Waziristan as a major counter-terrorism campaign.");
+add("challenges","The National Action Plan (NAP), adopted in response to a major terrorist attack, was introduced in which year?",["2008","2014","2018","2022"],1,"The National Action Plan was adopted in December 2014 following the tragic Army Public School Peshawar attack, outlining a comprehensive counter-terrorism strategy.");
+add("challenges","The Army Public School attack in Peshawar, a defining moment in Pakistan's fight against terrorism, occurred in which year?",["2007","2014","2016","2020"],1,"The devastating attack on the Army Public School in Peshawar occurred on December 16, 2014, claiming numerous young lives and galvanizing national counter-terrorism resolve.");
+add("challenges","Religious extremism as a contemporary challenge in Pakistan is often linked to which contributing factor?",["Excessive secular education funding","Proliferation of certain unregulated madrassas promoting radical ideologies","Complete absence of religious institutions","Overregulation eliminating all religious practice"],1,"Some unregulated religious seminaries have been associated with promoting extremist ideologies, contributing to the broader challenge of religious extremism.");
+add("challenges","Brain drain remains a contemporary challenge as skilled Pakistani professionals increasingly emigrate to which type of destination?",["Countries offering better economic opportunities and quality of life","Exclusively uninhabited regions","Only neighboring rural areas within Pakistan","Nowhere; emigration has completely stopped"],0,"Skilled professionals, including doctors, engineers, and IT specialists, often emigrate seeking better economic opportunities, salaries, and living standards abroad.");
+add("challenges","Which government-led initiative in Pakistan focuses on reforming and standardizing the curriculum across school systems?",["Single National Curriculum (SNC)","National Highway Plan","Benazir Income Support Programme","National Tariff Commission"],0,"The Single National Curriculum (SNC) initiative aims to standardize educational content across public, private, and madrassa school systems in Pakistan.");
+add("challenges","Out-of-school children remain a pressing educational challenge in Pakistan, with estimates suggesting how many children are affected nationally (as widely cited in recent years)?",["Fewer than 100,000","Over 20 million","Exactly 1 million","Zero, as education is fully universal"],1,"Pakistan has one of the world's highest numbers of out-of-school children, with estimates frequently citing over 20 million affected, a major education sector challenge.");
+add("challenges","Counter-extremism efforts in Pakistan have included deradicalization programs primarily targeting which group?",["Retired civil servants","Former militants and at-risk youth","Foreign diplomats","University professors exclusively"],1,"Deradicalization and rehabilitation programs have been developed to reintegrate former militants and at-risk youth away from extremist ideologies.");
+add("challenges","Which of the following best captures the relationship between terrorism and Pakistan's economy as a contemporary challenge?",["Terrorism has no economic impact whatsoever","Terrorism has imposed significant economic costs through security spending and lost investment","Terrorism has only positive economic effects","Terrorism exclusively affects agriculture with no other sector impact"],1,"Terrorism has imposed substantial economic costs on Pakistan through increased security expenditure, reduced foreign investment, and disrupted economic activity.");
+add("challenges","Pakistan's efforts to combat terrorism financing have involved compliance requirements from which international body?",["Financial Action Task Force (FATF)","World Health Organization","International Olympic Committee","International Civil Aviation Organization"],0,"Pakistan has worked to meet compliance requirements set by the Financial Action Task Force (FATF) regarding anti-money laundering and counter-terrorism financing standards.");
+add("challenges","Brain drain is sometimes paradoxically linked to which potential economic benefit for Pakistan, despite its costs?",["Increased remittance inflows from overseas workers","Total elimination of unemployment","Complete loss of foreign exchange reserves","Mandatory return of all emigrants within a year"],0,"While brain drain depletes domestic skilled labor, it can also generate substantial remittance inflows that support foreign exchange reserves and household incomes.");
+
+/* ---------------- TOPIC 15: HEROES OF PAKISTAN ---------------- */
+add("heroes","Who is officially recognized as the founder of Pakistan and its first Governor-General?",["Liaquat Ali Khan","Muhammad Ali Jinnah","Allama Iqbal","Sir Syed Ahmad Khan"],1,"Muhammad Ali Jinnah, known as Quaid-e-Azam, led the Pakistan Movement and became the nation's founder and first Governor-General in 1947.");
+add("heroes","Allama Muhammad Iqbal is celebrated as Pakistan's national poet and is most associated with which contribution?",["Conceptualizing a separate Muslim homeland in his philosophical poetry and 1930 Allahabad address","Serving as the first President of Pakistan","Leading the 1965 war effort","Founding the State Bank of Pakistan"],0,"Allama Iqbal is revered for articulating the philosophical and political vision for a separate Muslim homeland, notably in his 1930 Allahabad Address.");
+add("heroes","Who served as Pakistan's first Prime Minister after independence in 1947?",["Liaquat Ali Khan","Zulfikar Ali Bhutto","Muhammad Ali Jinnah","Ayub Khan"],0,"Liaquat Ali Khan became Pakistan's first Prime Minister in 1947 and played a key role in early state-building, including the Objectives Resolution.");
+add("heroes","Dr. Abdul Qadeer Khan is widely recognized in Pakistan as a key figure in which scientific achievement?",["Pakistan's nuclear weapons program development","Discovery of the polio vaccine","Construction of the Karakoram Highway","Establishment of Pakistan's space agency"],0,"Dr. A.Q. Khan is credited as a central figure in developing Pakistan's uranium enrichment capability, contributing to its nuclear weapons program.");
+add("heroes","Dr. Abdus Salam, a renowned Pakistani scientist, is best known for which achievement?",["Winning the Nobel Prize in Physics (1979) for electroweak unification theory","Inventing the telephone","Discovering penicillin","Leading Pakistan's cricket team to a World Cup"],0,"Dr. Abdus Salam won the Nobel Prize in Physics in 1979 for his contributions to the electroweak unification theory, becoming Pakistan's first Nobel laureate.");
+add("heroes","Which military figure is honored as a national hero for his role in the 1965 Pakistan-India war, particularly the Battle of Chawinda?",["Major Aziz Bhatti Shaheed","General Ayub Khan","Air Marshal Asghar Khan","General Tikka Khan"],0,"Major Raja Aziz Bhatti Shaheed is celebrated as a national hero for his valor during the 1965 war, particularly at the Battle of Chawinda's BRB Canal sector, earning the Nishan-e-Haider.");
+add("heroes","Nishan-e-Haider, Pakistan's highest military gallantry award, has been awarded for acts of extreme bravery, typically posthumously, since which conflict?",["World War I","The 1965 and subsequent wars/operations","The Crimean War","The American Civil War"],1,"Nishan-e-Haider has been awarded since the 1965 war and subsequent conflicts/operations to honor extraordinary acts of valor, usually awarded posthumously.");
+add("heroes","Sir Syed Ahmad Khan, considered a forerunner of the Pakistan Movement, is best known for founding which influential educational institution?",["Aligarh Muslim University (originally Muhammadan Anglo-Oriental College)","University of the Punjab","Quaid-e-Azam University","NUST"],0,"Sir Syed Ahmad Khan founded the Muhammadan Anglo-Oriental College, later Aligarh Muslim University, promoting modern education among Muslims of the subcontinent.");
+add("heroes","Fatima Jinnah, recognized as 'Mother of the Nation,' played a significant role in the Pakistan Movement primarily through which contribution?",["Political activism and support alongside her brother Muhammad Ali Jinnah","Serving as Pakistan's first female Prime Minister","Commanding Pakistan's naval forces","Founding the State Bank of Pakistan"],0,"Fatima Jinnah actively supported the Pakistan Movement and remained a prominent political figure, later contesting the 1965 presidential election against Ayub Khan.");
+add("heroes","Abdul Sattar Edhi is remembered as a national hero primarily for his contributions to which field?",["Humanitarian and social welfare services through the Edhi Foundation","Nuclear physics research","Cricket administration","Constitutional law drafting"],0,"Abdul Sattar Edhi founded the Edhi Foundation, one of the world's largest volunteer ambulance and welfare networks, earning him recognition as a humanitarian icon.");
+add("heroes","Malala Yousafzai gained international recognition as a modern Pakistani hero primarily for her advocacy in which field?",["Girls' education rights","Space exploration","Banking reform","Military strategy"],0,"Malala Yousafzai became globally recognized for her courageous advocacy for girls' education, surviving an assassination attempt and later winning the Nobel Peace Prize.");
+add("heroes","Which scientist is credited with significant contributions to Pakistan's space program as the first chairman of SUPARCO?",["Dr. Abdus Salam","Dr. A.Q. Khan","Dr. Salimuzzaman Siddiqui","Dr. Rafi Muhammad Chaudhry"],0,"Dr. Abdus Salam played a foundational role in establishing Pakistan's space research efforts, contributing to the early development of SUPARCO.");
+add("heroes","General Muhammad Ayub Khan, a significant political-military figure, served as Pakistan's President primarily during which decade?",["1950s-1960s","1970s-1980s","1990s","2000s"],0,"Ayub Khan ruled Pakistan as President from 1958 to 1969, marking a significant era of military-led governance and economic development planning.");
+add("heroes","Which social reformer and educationist is particularly noted for founding institutions promoting Muslim women's education in pre-partition India?",["Fatima Jinnah","Begum Rana Liaquat Ali Khan, through welfare and women's organizations","Benazir Bhutto","Asma Jahangir"],1,"Begum Rana Liaquat Ali Khan was instrumental in founding welfare organizations and promoting women's participation in nation-building during Pakistan's early years.");
+add("heroes","Liaquat Ali Khan presented which foundational document to Pakistan's Constituent Assembly in 1949, shaping the country's constitutional direction?",["The Objectives Resolution","The Lahore Resolution","The Government of India Act","The Indus Waters Treaty"],0,"Liaquat Ali Khan presented the Objectives Resolution in 1949, establishing foundational principles for Pakistan's future constitution rooted in Islamic and democratic values.");
+add("heroes","Which Pakistani military hero is honored for commanding forces during the defense of Lahore in the 1965 war, later becoming a key national figure?",["General Tikka Khan","Air Marshal Muhammad Nur Khan","General Akhtar Hussain Malik","Admiral Tariq Kamal Khan"],1,"Air Marshal Muhammad Nur Khan played a pivotal role commanding the Pakistan Air Force's defense efforts during the 1965 war, particularly around Lahore.");
+
+/* ---------------- ADDITIONAL MCQs (Batch 2) ---------------- */
+add("geo","CPEC's 'Long Term Plan' (2017–2030) outlines cooperation across which broad set of areas?",["Connectivity, energy, industrial cooperation, and trade","Only tourism","Only fisheries","Only sports exchange"],0,"The CPEC Long Term Plan (2017–2030) sets out a comprehensive cooperation framework spanning connectivity, energy, industrial parks, agriculture, and trade.");
+add("geo","Gwadar's development as a deep-sea port is significant because it can accommodate which type of vessels?",["Only small fishing boats","Large cargo ships and oil tankers","Only military submarines","No vessels; it is a tourist beach only"],1,"Gwadar's deep-sea characteristics allow it to potentially host large container and oil-tanker vessels, enhancing its strategic trade value.");
+add("geo","Which of the following is a key concern for Pakistan regarding Indian dam construction on western rivers under the Indus Waters Treaty framework?",["Reduced downstream water flow affecting irrigation","Excessive water being sent to Pakistan with no use","Complete absence of any treaty governing the rivers","Indian dams have no relevance to Pakistan's water supply"],0,"Pakistan has expressed concerns that Indian hydroelectric projects on western rivers could affect downstream water flow critical to its agriculture, despite the Indus Waters Treaty.");
+add("geo","The Indus Waters Treaty, governing river-sharing between Pakistan and India, was signed in which year?",["1947","1960","1971","1999"],1,"The Indus Waters Treaty was signed in 1960, brokered by the World Bank, allocating the eastern rivers to India and the western rivers primarily to Pakistan.");
+add("geo","Pakistan's maritime boundary claims extend into the Arabian Sea partly due to potential reserves of which resource?",["Offshore oil and gas","Diamonds","Gold deposits","Coal seams"],0,"Pakistan's extended continental shelf claims in the Arabian Sea are partly motivated by the potential for offshore oil and gas reserves.");
+add("geo","Which of the following best explains why Afghanistan is considered vital to Pakistan's regional connectivity ambitions?",["It offers Pakistan access to Central Asian markets via land routes","It has no shared infrastructure with Pakistan","It blocks all Pakistani trade routes permanently","It is irrelevant to Pakistan's trade policy"],0,"Afghanistan serves as a key land corridor for Pakistan's trade and connectivity ambitions toward Central Asia, despite recurring security challenges.");
+add("geo","The Makran Coastal Highway, an important CPEC-linked infrastructure project, connects Karachi to which strategic port city?",["Gwadar","Lahore","Peshawar","Multan"],0,"The Makran Coastal Highway links Karachi to Gwadar along the Arabian Sea coastline, supporting CPEC's logistics and connectivity goals.");
+add("culture","Which Pakistani UNESCO World Heritage Site, located in Punjab, served as a Mughal-era military citadel?",["Rohtas Fort","Hunza Fort","Ranikot Fort","Bala Hisar Fort"],0,"Rohtas Fort, a UNESCO World Heritage Site in Punjab, was built during the 16th century as a formidable military citadel.");
+add("culture","Sindhi cultural identity places strong significance on which traditional cap, often worn alongside Ajrak?",["Sindhi Topi","Peshawari Pakol","Baloch turban exclusively","Karakul hat"],0,"The Sindhi Topi, an intricately embroidered cap, is a recognized symbol of Sindhi cultural identity, often paired with the Ajrak shawl.");
+add("culture","The Hunza Valley in Gilgit-Baltistan is notable for preserving which distinct cultural practice?",["Burusho and Wakhi cultural traditions","Exclusive Arabic-speaking heritage","Mongol nomadic herding only","Aztec-style architecture"],0,"The Hunza Valley preserves the distinct Burusho and Wakhi cultural and linguistic traditions, unique to the northern mountainous communities.");
+add("culture","Pakistan's classical music tradition includes raga-based performances most associated with which broader South Asian musical heritage?",["Hindustani classical music tradition","Western opera tradition","Andean folk tradition","Caribbean reggae tradition"],0,"Pakistan's classical music heritage draws heavily from the Hindustani classical tradition, shared historically across the subcontinent.");
+add("culture","The 'Urs' celebrations at Sufi shrines commemorate which occasion?",["The death anniversary of a Sufi saint","A saint's birthday exclusively","National Independence Day","Harvest festival exclusively"],0,"Urs celebrations mark the death anniversary of a Sufi saint, viewed as their spiritual union with the divine, and are major cultural-religious gatherings.");
+add("culture","Balochi culture places strong emphasis on which traditional code of honor and hospitality?",["Baloch Mayar (Balochmayar)","Pashtunwali exclusively","Samurai Bushido","Confucian Li"],0,"Balochmayar is the traditional Baloch code of conduct emphasizing hospitality, honor, courage, and tribal loyalty.");
+add("culture","Pashtun cultural identity is strongly shaped by which traditional tribal code emphasizing hospitality and honor?",["Pashtunwali","Balochmayar","Sindhi Vanjh","Punjabi Biradari"],0,"Pashtunwali is the traditional unwritten code of the Pashtun people, emphasizing hospitality (melmastia), honor, and justice.");
+add("culture","Which traditional Pakistani handicraft, originating in Multan and Hala, is known for its glazed ceramic patterns?",["Blue pottery (Kashi-kari)","Phulkari embroidery","Sindhi Rilli quilting","Truck art"],0,"Blue pottery, known as Kashi-kari, is a glazed ceramic tradition centered in Multan and Hala, featuring distinctive blue-and-white geometric patterns.");
+add("culture","The Rilli, a traditional patchwork quilt, is a notable handicraft associated with which province's material culture?",["Sindh","Khyber Pakhtunkhwa","Gilgit-Baltistan","Azad Jammu and Kashmir"],0,"The Rilli is a traditional Sindhi patchwork quilt, handmade using recycled fabric pieces stitched into intricate geometric designs.");
+add("culture","Globalization's modern trend of 'cultural fusion' in Pakistan is best exemplified by which phenomenon?",["Blending of Western pop music with traditional Sufi or folk elements","Complete rejection of all foreign influence","Total replacement of Urdu with English in daily life","Banning of all traditional festivals"],0,"Cultural fusion in Pakistan is exemplified by artists blending Western musical styles with traditional Sufi, qawwali, or folk elements, reflecting globalization's influence.");
+add("culture","Which traditional Punjabi folk dance is performed predominantly by men during harvest celebrations?",["Bhangra","Attan","Kathak","Khattak"],0,"Bhangra is a vibrant Punjabi folk dance traditionally performed during harvest celebrations, characterized by energetic movements and drumbeats (dhol).");
+add("culture","Pakistan's National Museum, housing significant Indus Valley and Gandhara artifacts, is located in which city?",["Karachi","Lahore","Islamabad","Peshawar"],0,"The National Museum of Pakistan in Karachi houses extensive collections from the Indus Valley Civilization, Gandhara period, and Islamic era.");
+add("culture","Taxila, a UNESCO World Heritage Site reflecting Gandhara civilization heritage, is located near which Pakistani city?",["Rawalpindi","Multan","Hyderabad","Sukkur"],0,"Taxila, near Rawalpindi, is a UNESCO World Heritage Site renowned for its ancient Gandhara Buddhist civilization ruins and archaeological significance.");
+add("economy","Pakistan's textile exports primarily depend on which raw material input grown domestically?",["Cotton","Jute","Silk","Hemp"],0,"Pakistan's large textile export sector relies heavily on domestically grown cotton as its primary raw material input.");
+add("economy","Which of the following describes Pakistan's typical fiscal year for budgeting and economic reporting?",["July to June","January to December","April to March","October to September"],0,"Pakistan's fiscal year runs from July 1 to June 30, used for national budgeting, revenue collection, and economic reporting purposes.");
+add("economy","Pakistan Stock Exchange (PSX) was formed through the merger of which regional exchanges in 2016?",["Karachi, Lahore, and Islamabad Stock Exchanges","Only the Karachi Stock Exchange","Dubai and Karachi Exchanges","Mumbai and Lahore Exchanges"],0,"The Pakistan Stock Exchange (PSX) was created in January 2016 through the integration of the Karachi, Lahore, and Islamabad Stock Exchanges.");
+add("economy","Pakistan's GDP growth has historically been constrained by which structural issue related to tax collection?",["A narrow tax base and low tax-to-GDP ratio","Excessively high tax-to-GDP ratio compared to all nations","Complete absence of any taxation system","Overcollection of taxes beyond government needs"],0,"Pakistan has long struggled with a narrow tax base and comparatively low tax-to-GDP ratio, limiting public revenue for development spending.");
+add("economy","Which crop, alongside wheat and cotton, is a major staple and export item for Pakistan's agricultural economy?",["Rice (notably Basmati)","Coffee beans","Cocoa","Olives"],0,"Basmati rice is a significant agricultural export for Pakistan, prized internationally for its aroma and quality alongside wheat and cotton.");
+add("economy","Pakistan's energy mix has traditionally relied heavily on which imported fuel, contributing to import costs?",["Furnace oil and imported LNG","Domestic uranium exclusively","Domestic solar panels exclusively","Imported coal from Antarctica"],0,"Pakistan has relied significantly on imported furnace oil and liquefied natural gas (LNG) for power generation, straining its import bill.");
+add("economy","Which renewable energy source has seen growing investment in Pakistan, particularly in Sindh's Jhimpir/Gharo wind corridor?",["Wind energy","Geothermal energy","Tidal energy exclusively","Nuclear fusion"],0,"The Jhimpir-Gharo wind corridor in Sindh has attracted significant investment in wind power projects, expanding Pakistan's renewable energy capacity.");
+add("economy","The Tarbela Dam, a critical infrastructure asset for irrigation and hydropower, is built on which river?",["Indus River","Jhelum River","Chenab River","Sutlej River"],0,"Tarbela Dam, one of the world's largest earth-filled dams, is constructed on the Indus River and is vital for irrigation and hydroelectric power.");
+add("economy","Pakistan's economic prospects in the digital economy are often linked to growth in which payments-related sector?",["Fintech and digital/mobile banking","Barter trade exclusively","Gold-backed currency exclusively","Manual cheque clearing exclusively"],0,"The growth of fintech and mobile/digital banking services represents a notable economic opportunity supporting financial inclusion and modernization in Pakistan.");
+add("economy","Which of the following is a recognized consequence of Pakistan's persistent water scarcity on its economy?",["Reduced agricultural yields and food security risks","Guaranteed surplus crop production every year","Total elimination of the agriculture sector's relevance","No effect on GDP whatsoever"],0,"Water scarcity directly threatens agricultural productivity, a sector central to Pakistan's GDP, employment, and food security.");
+add("economy","Pakistan's exports are heavily concentrated in which two broad categories, reflecting limited diversification?",["Textiles and agricultural products","Automobiles and electronics","Aerospace components and software","Pharmaceuticals and luxury goods exclusively"],0,"Pakistan's export base remains heavily concentrated in textiles and agricultural commodities, reflecting limited diversification into higher-value sectors.");
+add("foreign","Pakistan's foreign policy approach to the Gulf Cooperation Council (GCC) states is largely shaped by which factor?",["Religious ties, labor migration, and remittance inflows","Territorial disputes with GCC states","Total absence of any diplomatic relations","Military rivalry with all Gulf states"],0,"Strong religious and cultural ties, along with significant labor migration and remittance flows, shape Pakistan's close relations with GCC states.");
+add("foreign","Which determinant of foreign policy considers a state's military and economic strength relative to other nations?",["National power/capability determinant","Astronomical determinant","Linguistic determinant","Architectural determinant"],0,"A state's relative military and economic capability is a key determinant shaping how assertively or cautiously it can pursue its foreign policy goals.");
+add("foreign","Pakistan's role in the Afghan peace process has frequently been described in terms of which diplomatic function?",["Facilitator/mediator between Afghan factions and international stakeholders","Sole decision-maker overriding all Afghan factions","Complete non-involvement in any Afghan affairs","Military occupier of Afghan territory"],0,"Pakistan has often positioned itself as a facilitator in Afghan peace negotiations, leveraging its historical and geographic ties to the region.");
+add("foreign","Pakistan-China economic relations have deepened significantly through which flagship bilateral framework?",["China-Pakistan Economic Corridor (CPEC)","Trans-Pacific Partnership","NAFTA","Mercosur"],0,"CPEC stands as the centerpiece of deepened Pakistan-China economic cooperation, encompassing infrastructure, energy, and trade investments.");
+add("foreign","Pakistan's relationship with the European Union includes trade benefits under which preferential scheme?",["GSP+ (Generalized Scheme of Preferences Plus)","NAFTA tariff waiver","ASEAN Free Trade Agreement","Mercosur common tariff"],0,"Pakistan benefits from the EU's GSP+ scheme, granting preferential tariff access to European markets in exchange for compliance with international conventions.");
+add("foreign","Pakistan's foreign policy determinants include 'national interest,' which broadly encompasses which combination of priorities?",["Security, economic development, and sovereignty","Exclusive focus on tourism revenue","Exclusive focus on sports diplomacy","Exclusive focus on space exploration"],0,"National interest in foreign policy typically encompasses security, economic development, and the protection of sovereignty as core guiding priorities.");
+add("foreign","Pakistan's historical participation in UN peacekeeping has been most prominent in missions located in which broader region?",["Africa","Antarctica","Western Europe","North America"],0,"Pakistan has contributed substantial peacekeeping personnel to numerous UN missions across Africa, alongside deployments in other regions.");
+add("foreign","Pakistan's foreign relations with Bangladesh, following the 1971 separation, have historically been affected by which lingering issue?",["Disputes over the legacy and acknowledgment of 1971 war events","Border disputes over Kashmir","Disputes over the Indus Waters Treaty","Disputes over CPEC routes"],0,"Relations between Pakistan and Bangladesh have periodically been strained by unresolved historical grievances stemming from the 1971 conflict and its aftermath.");
+add("foreign","Pakistan's principle of 'non-alignment' in certain periods of its foreign policy meant which approach?",["Avoiding rigid alignment with either superpower bloc during the Cold War","Forming a formal alliance with both superpowers simultaneously","Complete isolation from world affairs","Joining only regional alliances and no global ones"],0,"At various points, Pakistan articulated a preference for non-alignment, seeking to avoid rigid entanglement with either Cold War superpower bloc, though in practice it leaned toward the West.");
+add("present","Which of the following best describes 'social stratification' as observed in present-day Pakistani society?",["Hierarchical divisions based on class, land ownership, and biradari status","A completely classless and stateless society","Random allocation of social status with no patterns","Absence of any economic disparity"],0,"Social stratification in Pakistan often reflects hierarchical divisions shaped by class, land ownership, and biradari (kinship) status, particularly in rural areas.");
+add("present","Pakistan's growing middle class is most closely associated with which urban economic trend?",["Expansion of services, retail, and white-collar employment","Total collapse of urban economies","Mandatory return to subsistence farming","Elimination of private enterprise"],0,"The expansion of services, retail, and white-collar employment in urban centers has contributed to the growth of Pakistan's middle class.");
+add("present","Which factor is frequently cited as critical to improving social cohesion amid Pakistan's ethnic diversity?",["Equitable resource distribution and political representation","Forced uniformity of language nationwide","Complete elimination of provincial governments","Banning ethnic cultural expression"],0,"Equitable resource distribution and fair political representation across ethnic groups are widely seen as key to strengthening social cohesion in Pakistan.");
+add("present","Pakistan's future outlook regarding climate resilience is increasingly tied to investment in which type of infrastructure?",["Water management, flood defenses, and renewable energy","Exclusive luxury real estate","Exclusive military hardware","Exclusive entertainment complexes"],0,"Building resilient water management systems, flood defenses, and renewable energy capacity is central to Pakistan's climate adaptation and future outlook.");
+add("present","The concept of 'social capital,' relevant to Pakistan's present society, primarily refers to which resource?",["Networks of trust, relationships, and community ties","Physical currency reserves","Government bond holdings","Foreign exchange reserves"],0,"Social capital refers to the value derived from networks of trust, relationships, and community ties that facilitate cooperation and mutual support in society.");
+add("present","Pakistan's present-day social structure shows increasing influence of which institution in shaping public opinion and youth identity?",["Social media and digital platforms","Exclusively print encyclopedias","Exclusively royal decrees","Exclusively oral village councils with no other influence"],0,"Social media and digital platforms have become increasingly influential in shaping public opinion, political discourse, and youth identity in present-day Pakistan.");
+add("present","Which present-day challenge is associated with Pakistan's rapidly growing urban population straining public services?",["Pressure on healthcare, sanitation, and transport systems","Complete absence of any urban residents","Surplus unused hospital capacity nationwide","Zero demand for public transport"],0,"Rapid urban population growth has placed considerable strain on healthcare, sanitation, transportation, and other public service systems in Pakistani cities.");
+add("challenges","Which contemporary challenge relates to disparities in education access between public and private school systems in Pakistan?",["Educational inequality and quality gaps","Complete uniformity in all schools nationwide","Absence of any private schooling option","Zero enrollment in public schools"],0,"Significant quality and access disparities between Pakistan's public and private education systems contribute to broader educational inequality challenges.");
+add("challenges","Sectarian violence, a contemporary security challenge in Pakistan, primarily stems from tensions between which groups?",["Different Islamic sects, notably Sunni-Shia tensions in some regions","Rival sports franchises","Competing agricultural cooperatives","Rival airline companies"],0,"Sectarian violence in Pakistan has historically stemmed from tensions between different Islamic sects, particularly in certain regions with a history of sectarian conflict.");
+add("challenges","Cybersecurity and misinformation have emerged as contemporary challenges in Pakistan largely due to which technological trend?",["Rapid growth of internet and social media usage","Complete absence of internet access nationwide","Decline in mobile phone ownership","Banning of all digital communication"],0,"The rapid expansion of internet connectivity and social media usage has introduced new challenges related to cybersecurity, misinformation, and digital literacy.");
+add("challenges","Pakistan's contemporary challenge of 'climate-induced migration' refers to which phenomenon?",["Displacement of populations due to floods, droughts, or environmental degradation","Migration motivated purely by tourism","Migration caused exclusively by job promotions","Migration with no relation to environmental factors"],0,"Climate-induced migration describes the displacement of communities due to floods, droughts, or other environmental degradation linked to climate change, an emerging challenge for Pakistan.");
+add("challenges","Vocational and technical education gaps are frequently cited as contributing to which broader economic-social challenge in Pakistan?",["Youth unemployment and skills mismatch","Surplus of highly specialized labor with no demand","Complete absence of any unemployment","Total absence of any job market"],0,"Insufficient vocational and technical training contributes to a skills mismatch, exacerbating youth unemployment despite a large working-age population.");
+add("challenges","Pakistan's healthcare system faces a contemporary challenge regarding which structural issue?",["Inadequate public health infrastructure and spending relative to need","Excessive public health spending beyond requirements","Complete absence of any disease burden","Universal world-class healthcare access already achieved"],0,"Pakistan's healthcare system continues to face challenges related to inadequate infrastructure and public health spending relative to the population's needs.");
+add("heroes","Which Pakistani field hockey legend is widely regarded as one of the greatest players in the sport's history?",["Sohail Abbas","Wasim Akram","Jahangir Khan","Imran Khan"],0,"Sohail Abbas is celebrated as one of the greatest field hockey players, holding records for goals scored, particularly via penalty corners, for Pakistan.");
+add("heroes","Imran Khan, prior to his political career, is celebrated as a national hero for leading Pakistan to victory in which major cricket event?",["1992 Cricket World Cup","1996 Cricket World Cup","1975 Cricket World Cup","2003 Cricket World Cup"],0,"Imran Khan captained Pakistan's cricket team to its historic 1992 Cricket World Cup victory, cementing his status as a sporting hero.");
+add("heroes","Jahangir Khan is celebrated as a national hero for his unparalleled dominance in which sport?",["Squash","Tennis","Badminton","Table tennis"],0,"Jahangir Khan is regarded as one of the greatest squash players in history, famous for an unbeaten streak of over five years during his career.");
+add("heroes","Which Pakistani military figure is honored with the Nishan-e-Haider for valor during the 1971 war's defense of the Eastern Front?",["Major Shabbir Sharif Shaheed","General Yahya Khan","Admiral Tariq Kamal","Air Marshal Zafar Chaudhry"],0,"Major Shabbir Sharif Shaheed was awarded the Nishan-e-Haider for extraordinary bravery during the 1971 war, becoming one of Pakistan's most celebrated military heroes.");
+add("heroes","Rashid Minhas, the youngest recipient of the Nishan-e-Haider, was honored for his actions as which type of serviceman?",["Pakistan Air Force pilot","Naval submarine commander","Army infantry officer","Border Police constable"],0,"Pilot Officer Rashid Minhas, the youngest Nishan-e-Haider recipient, sacrificed his life in 1971 to prevent his hijacked aircraft from reaching enemy territory.");
+add("heroes","Which Pakistani social reformer and Nobel laureate is recognized internationally for advocacy against child labor and exploitation?",["Malala Yousafzai (education advocacy)","Iqbal Masih's cause was championed by international rights activists","Edhi Foundation's exclusive focus on child labor","None; no Pakistani has received this recognition"],1,"While Malala Yousafzai is Pakistan's Nobel laureate for education advocacy, child rights activist Iqbal Masih's story drew global attention to child labor exploitation, inspiring international human rights advocacy.");
+add("heroes","Begum Rana Liaquat Ali Khan is also recognized as a founding figure of which Pakistani women's organization?",["All Pakistan Women's Association (APWA)","Pakistan Cricket Board","State Bank of Pakistan","Pakistan Olympic Association"],0,"Begum Rana Liaquat Ali Khan founded the All Pakistan Women's Association (APWA) in 1949, promoting women's welfare, education, and social reform.");
+add("heroes","Which Pakistani scientist is recognized for pioneering contributions to natural products chemistry and pharmaceutical research?",["Dr. Salimuzzaman Siddiqui","Dr. A.Q. Khan","Dr. Abdus Salam","Dr. Atta-ur-Rahman exclusively without predecessors"],0,"Dr. Salimuzzaman Siddiqui is regarded as a pioneer of natural products chemistry in Pakistan, making significant contributions to pharmaceutical research.");
+add("heroes","Dr. Atta-ur-Rahman, a prominent Pakistani scientist, is widely recognized for his contributions to which field alongside science policy leadership?",["Organic chemistry research and higher education reform","Nuclear weapons engineering","Naval architecture","Constitutional law"],0,"Dr. Atta-ur-Rahman is renowned for his organic chemistry research and played a key leadership role in reforming Pakistan's higher education sector.");
+add("heroes","General Muhammad Zia-ul-Haq, a significant political-military figure, ruled Pakistan as President primarily during which period?",["1977/1978–1988","1958–1969","1971–1977","1999–2008"],0,"General Zia-ul-Haq assumed power following a 1977 coup and ruled as President until his death in 1988, a significant era in Pakistan's political history.");
+add("heroes","Liaquat Ali Khan is often referred to by which honorific title reflecting his role in Pakistan's founding?",["Quaid-e-Millat","Quaid-e-Azam","Baba-e-Qaum","Shaheed-e-Millat (also used) and Quaid-e-Millat"],3,"Liaquat Ali Khan is honored with titles including Quaid-e-Millat ('Leader of the Nation') and, following his assassination in 1951, Shaheed-e-Millat ('Martyr of the Nation').");
+
+/* ---------------- ADDITIONAL MCQs (Batch 3 - final) ---------------- */
+add("geo","The Mangla Dam, an important hydropower and irrigation asset relevant to Pakistan's resource strategy, is built on which river?",["Jhelum River","Indus River","Chenab River","Ravi River"],0,"Mangla Dam is constructed on the Jhelum River and is one of Pakistan's largest reservoirs, supporting irrigation and hydroelectric power generation.");
+add("geo","Which of the following best describes the 'Wakhan Corridor,' a narrow strip relevant to regional geography near Pakistan's northern frontier?",["A narrow Afghan strip separating Pakistan from Tajikistan","A Pakistani province","An Indian-administered territory","A Chinese autonomous region"],0,"The Wakhan Corridor is a narrow strip of Afghan territory that separates Pakistan from Tajikistan, relevant to the region's geopolitical geography.");
+add("geo","Pakistan's claim to maritime economic zones under UNCLOS primarily supports which economic interest?",["Exclusive rights to fisheries and seabed resources","Exclusive rights to airspace only","Rights to mine the moon","Rights over Antarctic territory"],0,"Under the UN Convention on the Law of the Sea (UNCLOS), Pakistan's Exclusive Economic Zone supports its rights to fisheries, seabed minerals, and offshore resources.");
+add("culture","Which Pakistani Sufi poet, revered in Sindh, is renowned for his mystic verses compiled in the 'Shah Jo Risalo'?",["Shah Abdul Latif Bhittai","Bulleh Shah","Khwaja Ghulam Farid","Rahman Baba"],0,"Shah Abdul Latif Bhittai, a celebrated Sindhi Sufi poet, is renowned for his mystic verses compiled in the 'Shah Jo Risalo,' a cornerstone of Sindhi literature.");
+add("culture","Bulleh Shah, a celebrated Sufi poet, composed his mystic verses primarily in which language?",["Punjabi","Sindhi","Balochi","Pashto"],0,"Bulleh Shah, one of the most revered Punjabi Sufi poets, composed his spiritual and philosophical poetry predominantly in Punjabi.");
+add("culture","The Kalash Valleys' 'Chilam Joshi' festival, celebrating spring, is most notable for which cultural element?",["Traditional dance, music, and flower-themed celebrations","Camel racing exclusively","Ice fishing competitions","Formal parliamentary elections"],0,"The Chilam Joshi spring festival of the Kalash people features traditional dance, music, and flower-adorned celebrations marking the changing season.");
+add("economy","Pakistan's textile industry is concentrated heavily in which two provinces, hosting the majority of mills and export units?",["Punjab and Sindh","Balochistan and Gilgit-Baltistan","Khyber Pakhtunkhwa and Azad Jammu and Kashmir","Islamabad Capital Territory only"],0,"The bulk of Pakistan's textile manufacturing capacity, including major mills and export processing units, is concentrated in Punjab and Sindh.");
+add("economy","Which Pakistani city is widely recognized as the country's primary financial and banking hub?",["Karachi","Quetta","Peshawar","Gilgit"],0,"Karachi serves as Pakistan's principal financial and banking hub, hosting the Pakistan Stock Exchange and headquarters of major financial institutions.");
+add("economy","Pakistan's National Tariff Policy and trade agreements are primarily designed to address which economic objective?",["Boosting exports and improving trade competitiveness","Eliminating all foreign trade","Banning agricultural exports","Fixing the exchange rate permanently"],0,"Trade and tariff policies in Pakistan generally aim to enhance export competitiveness and rationalize import duties to support economic growth.");
+add("economy","Which of the following best describes Pakistan's informal economy challenge?",["A significant share of economic activity occurs outside formal tax and regulatory systems","All economic activity is fully documented and taxed","The informal economy has been completely eliminated","Informal economy refers only to foreign trade"],0,"A substantial portion of Pakistan's economic activity occurs in the informal sector, undocumented and outside formal taxation, complicating revenue collection and policy planning.");
+add("foreign","Pakistan's Look Africa Policy, launched to diversify foreign relations, primarily aims to strengthen ties in which area?",["Trade and economic engagement with African nations","Military alliance with NATO","Exclusive focus on Antarctic research","Currency union with African states"],0,"Pakistan's Look Africa Policy seeks to diversify and deepen trade, investment, and diplomatic engagement with African nations beyond its traditional partners.");
+add("foreign","Pakistan's foreign policy regarding the Israel-Palestine issue has historically emphasized support for which position?",["A just settlement supporting Palestinian rights, consistent with OIC positions","Unconditional alliance with Israel","Complete disengagement from the issue","Support for unilateral annexation"],0,"Pakistan has historically supported a just and comprehensive resolution to the Palestinian issue, aligning with broader OIC positions on the matter.");
+add("foreign","Pakistan's diplomatic and economic relations with Turkey are often characterized by which descriptive term, similar to its China relationship?",["Brotherly relations rooted in religious and cultural affinity","Purely transactional with no shared history","Historically hostile and adversarial","Limited to sports exchanges only"],0,"Pakistan-Turkey relations are often described as brotherly, rooted in shared religious, cultural, and historical affinities going back decades.");
+add("present","Pakistan's growing diaspora population abroad contributes to national development primarily through which channel?",["Remittances and international advocacy/investment","Complete severance of ties with Pakistan","Exclusive focus on foreign citizenship acquisition","No measurable contribution"],0,"The Pakistani diaspora contributes significantly to national development through remittances, foreign investment, and international advocacy for Pakistan's interests.");
+add("present","Which of the following best reflects a contemporary shift in Pakistan's family structure trends in urban areas?",["Gradual increase in nuclear family households alongside traditional extended families","Complete disappearance of all family units","Mandatory communal living arrangements","Total reversal to purely nomadic lifestyles"],0,"Urbanization and economic change have contributed to a gradual increase in nuclear family households in Pakistani cities, even as extended family ties remain significant.");
+add("present","Pakistan's future outlook regarding digital governance is increasingly linked to initiatives in which area?",["E-governance and digital ID systems (e.g. NADRA)","Elimination of all government records","Exclusive paper-based administration","Banning internet access nationwide"],0,"Pakistan has invested in e-governance and digital identity infrastructure, such as NADRA's biometric systems, to modernize public administration.");
+add("challenges","Pakistan's contemporary challenge of urban air pollution, notably smog in Punjab, is significantly linked to which combination of factors?",["Crop residue burning, vehicular emissions, and industrial pollution","Excessive rainfall with no other cause","Complete absence of any industrial activity","Exclusively volcanic activity"],0,"Seasonal smog in Punjab, particularly around Lahore, results from a combination of crop residue burning, vehicular emissions, and industrial pollution.");
+add("challenges","Which contemporary governance challenge is frequently cited as hampering effective policy implementation in Pakistan?",["Weak institutional capacity and bureaucratic inefficiency","Excessive efficiency with no need for reform","Complete absence of any government institutions","Overstaffing with no administrative challenges"],0,"Weak institutional capacity and bureaucratic inefficiencies are frequently identified as obstacles to effective policy design and implementation in Pakistan.");
+add("challenges","Population growth as a contemporary challenge in Pakistan places strain primarily on which set of resources?",["Land, water, housing, and public services","Only foreign currency reserves","Only space exploration budgets","Only diplomatic missions abroad"],0,"Pakistan's rapid population growth places mounting pressure on finite land, water, housing, and public service resources, compounding development challenges.");
+add("heroes","Wasim Akram, a celebrated Pakistani sporting hero, is best known for his contributions to which sport?",["Cricket (fast bowling)","Hockey","Squash","Boxing"],0,"Wasim Akram is widely regarded as one of the greatest fast bowlers in cricket history, earning him status as a national sporting hero.");
+add("heroes","Which Pakistani mountaineer became renowned for ascending multiple 8,000-meter peaks, contributing to national pride in mountaineering?",["Ashraf Aman (first Pakistani to summit K2)","Imran Khan","A.Q. Khan","Abdus Salam"],0,"Ashraf Aman made history as the first Pakistani mountaineer to summit K2 in 1977, contributing significantly to the country's mountaineering legacy.");
+add("heroes","Colonel Sher Khan, a recipient of the Nishan-e-Haider, was honored for his valor during which conflict?",["The 1999 Kargil conflict","The 1965 war","The 1971 war","World War II"],0,"Captain Karnal Sher Khan was awarded the Nishan-e-Haider posthumously for extraordinary bravery during the 1999 Kargil conflict.");
+add("heroes","Which Pakistani educationist and reformer is recognized for founding modern educational institutions promoting science education in the early 20th century?",["Sir Syed Ahmad Khan's broader educational reform legacy","Dr. A.Q. Khan","Liaquat Ali Khan","Zulfikar Ali Bhutto"],0,"Sir Syed Ahmad Khan's broader educational reform movement laid foundations for modern scientific and Western-style education among Muslims of the subcontinent.");
+add("heroes","Which Pakistani Nobel laureate's recognition in 1979 also marked a historic first for the broader Muslim world in that scientific field?",["Dr. Abdus Salam in Physics","Dr. A.Q. Khan in Chemistry","Malala Yousafzai in Literature","Dr. Atta-ur-Rahman in Medicine"],0,"Dr. Abdus Salam's 1979 Nobel Prize in Physics marked a historic first, as he became the first Muslim Nobel laureate in the sciences.");
+add("heroes","Zulfikar Ali Bhutto, a significant political figure in Pakistan's history, served as Prime Minister primarily during which decade?",["1970s","1950s","1990s","2000s"],0,"Zulfikar Ali Bhutto served as Pakistan's Prime Minister from 1973 to 1977, a significant period that included the 1973 Constitution's promulgation.");
+add("heroes","Benazir Bhutto holds the historic distinction of being the first woman to achieve which position in the Muslim world?",["Prime Minister of a Muslim-majority country","President of the United Nations General Assembly","Secretary-General of the OIC","Chief Justice of Pakistan"],0,"Benazir Bhutto made history in 1988 as the first woman to become Prime Minister of a Muslim-majority country.");
+add("heroes","Which Pakistani Air Force pilot is honored for valor during the 1965 war's aerial engagements, contributing to PAF's celebrated history?",["M.M. Alam","Rashid Minhas","Sher Khan","Aziz Bhatti"],0,"Squadron Leader M.M. Alam is celebrated for his exceptional aerial combat skills during the 1965 war, including a record-setting feat of shooting down multiple aircraft in a single engagement.");
+add("heroes","Which Pakistani figure is recognized as a pioneering social entrepreneur for founding the Citizens Foundation, focused on education for underprivileged children?",["A group of Pakistani business leaders founded TCF in 1995","Abdul Sattar Edhi","Malala Yousafzai","Imran Khan"],0,"The Citizens Foundation (TCF) was founded in 1995 by a group of Pakistani professionals and business leaders to provide quality education to underprivileged children.");
+add("heroes","Dr. Ruth Pfau, honored posthumously by Pakistan for decades of humanitarian service, dedicated her work primarily to treating which disease?",["Leprosy","Malaria","Tuberculosis exclusively","Polio exclusively"],0,"Dr. Ruth Pfau, a German-born doctor who became a Pakistani citizen, dedicated her life to treating leprosy patients and is honored as a humanitarian hero in Pakistan.");
+
+/* ---------- Topic metadata ---------- */
+const TOPICS = {
+  geo:{name:"Geostrategic Importance",icon:"fa-earth-asia"},
+  culture:{name:"Culture of Pakistan",icon:"fa-mosque"},
+  economy:{name:"Pakistan Economy",icon:"fa-chart-line"},
+  foreign:{name:"Foreign Policy & Relations",icon:"fa-handshake"},
+  present:{name:"Pakistan at Present Times",icon:"fa-users"},
+  challenges:{name:"Contemporary Challenges",icon:"fa-triangle-exclamation"},
+  heroes:{name:"Heroes of Pakistan",icon:"fa-medal"}
+};
+
+/* assign stable ids */
+MCQ_BANK.forEach((m,i)=>m.id=i);
+
+/* =========================================================================
+   APP STATE & LOGIC
+   ========================================================================= */
+let state = {
+  examQuestions: [],
+  answers: {},          // id -> {selectedIdx, correct, skipped}
+  bookmarks: new Set(),
+  currentIndex: 0,
+  timerInterval: null,
+  seconds: 0,
+  shuffledOptions: {}   // id -> {opts:[], correctIdx}
+};
+
+const PAGE_ORDER = ['loginPage','dashboardPage','examPage','resultPage','reviewPage'];
+
+function showPage(id, direction){
+  const current = document.querySelector('.page.active');
+  const target = document.getElementById(id);
+  if(!target || current === target) return;
+
+  if(!direction){
+    const oldIdx = current ? PAGE_ORDER.indexOf(current.id) : -1;
+    const newIdx = PAGE_ORDER.indexOf(id);
+    direction = newIdx >= oldIdx ? 'forward' : 'back';
+  }
+
+  target.style.zIndex = 3;
+  target.style.animation = direction === 'back' ? 'slideInLeft .35s ease forwards' : 'slideInRight .35s ease forwards';
+  target.classList.add('active');
+
+  if(current){
+    current.style.zIndex = 2;
+    current.style.animation = direction === 'back' ? 'slideOutRight .35s ease forwards' : 'slideOutLeft .35s ease forwards';
+  }
+
+  setTimeout(()=>{
+    if(current){
+      current.classList.remove('active');
+      current.style.animation = '';
+      current.style.zIndex = '';
+    }
+    target.style.animation = '';
+    target.style.zIndex = '';
+  }, 360);
+
+  target.scrollTop = 0;
+}
+
+/* ---------- THEME ---------- */
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.removeItem('pk-theme'); // avoid persistent storage per artifact rules; use in-memory only
+  window.__theme = t;
+  themeIcon.className = t === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+}
+themeToggle.addEventListener('click', ()=>{
+  setTheme(window.__theme === 'light' ? 'dark' : 'light');
+});
+setTheme('dark');
+
+/* ---------- LOGIN ---------- */
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const u = document.getElementById('username').value.trim();
+  const p = document.getElementById('password').value.trim();
+  if(u === 'shahzaib' && p === 'springboot'){
+    initDashboard();
+    showPage('dashboardPage');
+  } else {
+    const err = document.getElementById('loginError');
+    err.style.display = 'block';
+    const card = document.getElementById('loginCard');
+    card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+  }
+});
+document.getElementById('logoutBtn').addEventListener('click', ()=>{
+  document.getElementById('username').value='';
+  document.getElementById('password').value='';
+  document.getElementById('loginError').style.display='none';
+  showPage('loginPage');
+});
+
+/* ---------- DASHBOARD ---------- */
+function initDashboard(){
+  document.getElementById('statTotal').textContent = MCQ_BANK.length;
+  document.getElementById('statDuration').textContent = Math.ceil(MCQ_BANK.length * 0.75);
+  document.getElementById('statBookmarks').textContent = state.bookmarks.size;
+
+  const grid = document.getElementById('topicGrid');
+  grid.innerHTML = '';
+  Object.keys(TOPICS).forEach(key=>{
+    const count = MCQ_BANK.filter(m=>m.topic===key).length;
+    const col = document.createElement('div');
+    col.className = 'col-md-4 col-sm-6';
+    col.innerHTML = `
+      <div class="topic-card" data-topic="${key}">
+        <div class="d-flex align-items-center gap-3 mb-2">
+          <div class="topic-icon"><i class="fa-solid ${TOPICS[key].icon}"></i></div>
+          <div>
+            <div class="fw-bold">${TOPICS[key].name}</div>
+            <div class="small" style="color:var(--text-sub);">${count} MCQs</div>
+          </div>
+        </div>
+        <button class="btn btn-pk btn-sm w-100 mt-2">Start Topic Exam</button>
+      </div>`;
+    col.querySelector('.topic-card').addEventListener('click', ()=> startExam(MCQ_BANK.filter(m=>m.topic===key)) );
+    grid.appendChild(col);
+  });
+}
+
+document.getElementById('startFullExamBtn').addEventListener('click', ()=> startExam([...MCQ_BANK]) );
+
+document.getElementById('randomExamBtn').addEventListener('click', ()=>{
+  const shuffled = [...MCQ_BANK].sort(()=>Math.random()-0.5);
+  const count = Math.min(120, shuffled.length);
+  startExam(shuffled.slice(0,count));
+});
+
+document.getElementById('bookmarkReviewBtn').addEventListener('click', ()=>{
+  const bms = MCQ_BANK.filter(m=>state.bookmarks.has(m.id));
+  if(bms.length===0){ alert('No bookmarked questions yet. Bookmark questions during an exam to review them here.'); return; }
+  startExam(bms);
+});
+
+/* ---------- SEARCH ---------- */
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+searchInput.addEventListener('input', function(){
+  const term = this.value.trim().toLowerCase();
+  if(term.length < 2){ searchResults.style.display='none'; return; }
+  const matches = MCQ_BANK.filter(m => m.q.toLowerCase().includes(term) || m.opts.some(o=>o.toLowerCase().includes(term)) || m.explain.toLowerCase().includes(term));
+  if(matches.length===0){
+    searchResults.style.display='block';
+    searchResults.innerHTML = '<p class="text-center mb-0" style="color:var(--text-sub);">No matching MCQs found.</p>';
+    return;
+  }
+  searchResults.style.display='block';
+  searchResults.innerHTML = matches.slice(0,30).map(m=>`
+    <div class="border-bottom pb-2 mb-2" style="border-color:var(--card-border)!important;">
+      <span class="badge mb-1" style="background:var(--pk-green-light);">${TOPICS[m.topic].name}</span>
+      <div class="fw-semibold">${m.q}</div>
+    </div>`).join('') + (matches.length>30 ? `<p class="small text-center mt-2" style="color:var(--text-sub);">Showing 30 of ${matches.length} results</p>` : '');
+});
+
+/* ---------- EXAM ENGINE ---------- */
+function shuffleArray(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function startExam(questions){
+  if(questions.length===0){ alert('No questions available.'); return; }
+  state.examQuestions = shuffleArray(questions);
+  state.answers = {};
+  state.currentIndex = 0;
+  state.seconds = 0;
+  state.shuffledOptions = {};
+
+  state.examQuestions.forEach(q=>{
+    const indices = [0,1,2,3];
+    const shuffledIdx = shuffleArray(indices);
+    const newOpts = shuffledIdx.map(i=>q.opts[i]);
+    const newCorrect = shuffledIdx.indexOf(q.correct);
+    state.shuffledOptions[q.id] = {opts:newOpts, correct:newCorrect};
+  });
+
+  document.getElementById('qTotal').textContent = state.examQuestions.length;
+  buildPalette();
+  renderQuestion();
+  startTimer();
+  showPage('examPage');
+}
+
+function startTimer(){
+  clearInterval(state.timerInterval);
+  state.timerInterval = setInterval(()=>{
+    state.seconds++;
+    const m = Math.floor(state.seconds/60).toString().padStart(2,'0');
+    const s = (state.seconds%60).toString().padStart(2,'0');
+    document.getElementById('timerBadge').innerHTML = `<i class="fa-solid fa-clock me-1"></i>${m}:${s}`;
+  },1000);
+}
+
+function buildPalette(){
+  const wrap = document.getElementById('paletteWrap');
+  wrap.innerHTML = '';
+  state.examQuestions.forEach((q,idx)=>{
+    const btn = document.createElement('button');
+    btn.className = 'palette-btn';
+    btn.textContent = idx+1;
+    btn.id = 'palette-'+q.id;
+    btn.addEventListener('click', ()=>{ state.currentIndex = idx; renderQuestion(); });
+    wrap.appendChild(btn);
+  });
+  updatePaletteStatus();
+}
+
+function updatePaletteStatus(){
+  state.examQuestions.forEach((q,idx)=>{
+    const btn = document.getElementById('palette-'+q.id);
+    btn.classList.remove('answered','skipped','current','bookmarked');
+    const ans = state.answers[q.id];
+    if(ans && ans.selectedIdx !== undefined) btn.classList.add('answered');
+    if(idx === state.currentIndex) btn.classList.add('current');
+    if(state.bookmarks.has(q.id)) btn.classList.add('bookmarked');
+  });
+  const answeredCount = Object.values(state.answers).filter(a=>a.selectedIdx!==undefined).length;
+  document.getElementById('ansCount').textContent = answeredCount;
+  document.getElementById('remCount').textContent = state.examQuestions.length - answeredCount;
+  document.getElementById('skipCount').textContent = state.currentIndex - answeredCount + 1 > 0 ? Math.max(0, state.currentIndex+1-answeredCount) : 0;
+  const pct = Math.round(((state.currentIndex+1)/state.examQuestions.length)*100);
+  document.getElementById('examProgressBar').style.width = pct+'%';
+}
+
+function renderQuestion(){
+  const q = state.examQuestions[state.currentIndex];
+  const so = state.shuffledOptions[q.id];
+  document.getElementById('qNum').textContent = state.currentIndex+1;
+  document.getElementById('qTopicBadge').textContent = TOPICS[q.topic].name;
+  document.getElementById('qText').textContent = q.q;
+
+  const bookmarkIcon = document.getElementById('bookmarkToggle');
+  bookmarkIcon.className = state.bookmarks.has(q.id) ? 'fa-solid fa-bookmark bookmark-toggle active' : 'fa-regular fa-bookmark bookmark-toggle';
+  bookmarkIcon.onclick = ()=>{
+    if(state.bookmarks.has(q.id)) state.bookmarks.delete(q.id); else state.bookmarks.add(q.id);
+    renderQuestion();
+    updatePaletteStatus();
+  };
+
+  const wrap = document.getElementById('optionsWrap');
+  wrap.innerHTML = '';
+  const existingAnswer = state.answers[q.id];
+
+  so.opts.forEach((optText, idx)=>{
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.textContent = String.fromCharCode(65+idx) + '. ' + optText;
+    btn.disabled = !!existingAnswer;
+
+    if(existingAnswer){
+      if(idx === so.correct) btn.classList.add('correct');
+      if(existingAnswer.selectedIdx === idx && idx !== so.correct) btn.classList.add('wrong');
+    }
+
+    btn.addEventListener('click', ()=>{
+      if(state.answers[q.id]) return;
+      const isCorrect = idx === so.correct;
+      state.answers[q.id] = {selectedIdx: idx, correct: isCorrect};
+      btn.disabled = true;
+      Array.from(wrap.children).forEach(c=>c.disabled = true);
+      if(isCorrect){
+        btn.classList.add('correct');
+        setTimeout(()=>{ goNext(); }, 1000);
+      } else {
+        btn.classList.add('wrong');
+        wrap.children[so.correct].classList.add('correct');
+        setTimeout(()=>{ goNext(); }, 2000);
+      }
+      updatePaletteStatus();
+    });
+    wrap.appendChild(btn);
+  });
+
+  updatePaletteStatus();
+}
+
+function goNext(){
+  if(state.currentIndex < state.examQuestions.length - 1){
+    state.currentIndex++;
+    renderQuestion();
+  }
+}
+document.getElementById('nextBtn').addEventListener('click', goNext);
+document.getElementById('prevBtn').addEventListener('click', ()=>{
+  if(state.currentIndex > 0){ state.currentIndex--; renderQuestion(); }
+});
+
+document.getElementById('exitExamBtn').addEventListener('click', ()=>{
+  if(confirm('Exit exam? Your progress in this attempt will be lost.')){
+    clearInterval(state.timerInterval);
+    initDashboard();
+    showPage('dashboardPage');
+  }
+});
+
+document.getElementById('submitExamBtn').addEventListener('click', ()=>{
+  if(confirm('Submit exam now?')){
+    clearInterval(state.timerInterval);
+    showResults();
+  }
+});
+
+/* ---------- RESULTS ---------- */
+function showResults(){
+  const total = state.examQuestions.length;
+  let correct=0, wrong=0, skipped=0;
+  const topicStats = {};
+
+  state.examQuestions.forEach(q=>{
+    const ans = state.answers[q.id];
+    if(!topicStats[q.topic]) topicStats[q.topic] = {correct:0,total:0};
+    topicStats[q.topic].total++;
+    if(!ans){ skipped++; }
+    else if(ans.correct){ correct++; topicStats[q.topic].correct++; }
+    else { wrong++; }
+  });
+
+  const pct = total>0 ? Math.round((correct/total)*100) : 0;
+  document.getElementById('resTotal').textContent = total;
+  document.getElementById('resCorrect').textContent = correct;
+  document.getElementById('resWrong').textContent = wrong;
+  document.getElementById('resSkipped').textContent = skipped;
+  document.getElementById('percentText').textContent = pct+'%';
+  document.getElementById('circProgress').style.setProperty('--p', pct);
+
+  let grade='Poor', gColor='#dc3545';
+  if(pct>=85){grade='Excellent';gColor='#28a745';}
+  else if(pct>=70){grade='Very Good';gColor='#17a2b8';}
+  else if(pct>=50){grade='Good';gColor='#ffc107';}
+  else if(pct>=35){grade='Average';gColor='#fd7e14';}
+  const gradeBadge = document.getElementById('gradeBadge');
+  gradeBadge.textContent = grade;
+  gradeBadge.style.background = gColor;
+  gradeBadge.style.color = '#fff';
+
+  const perfWrap = document.getElementById('topicPerfWrap');
+  perfWrap.innerHTML = Object.keys(topicStats).map(t=>{
+    const s = topicStats[t];
+    const p = s.total>0 ? Math.round((s.correct/s.total)*100) : 0;
+    return `<div class="mb-2">
+      <div class="d-flex justify-content-between small mb-1"><span>${TOPICS[t].name}</span><span>${s.correct}/${s.total} (${p}%)</span></div>
+      <div class="progress"><div class="progress-bar" style="width:${p}%"></div></div>
+    </div>`;
+  }).join('');
+
+  showPage('resultPage');
+}
+
+document.getElementById('backToDashBtn').addEventListener('click', ()=>{
+  initDashboard();
+  showPage('dashboardPage');
+});
+
+/* ---------- REVIEW ---------- */
+document.getElementById('reviewAnswersBtn').addEventListener('click', ()=>{
+  const list = document.getElementById('reviewList');
+  list.innerHTML = state.examQuestions.map((q,idx)=>{
+    const so = state.shuffledOptions[q.id];
+    const ans = state.answers[q.id];
+    const optsHtml = so.opts.map((opt,i)=>{
+      let cls = '';
+      if(i===so.correct) cls='text-success fw-bold';
+      else if(ans && ans.selectedIdx===i) cls='text-danger fw-bold';
+      return `<div class="${cls}">${String.fromCharCode(65+i)}. ${opt}</div>`;
+    }).join('');
+    const statusBadge = !ans ? '<span class="badge bg-warning text-dark">Skipped</span>' : (ans.correct ? '<span class="badge bg-success">Correct</span>' : '<span class="badge bg-danger">Wrong</span>');
+    return `<div class="review-item">
+      <div class="d-flex justify-content-between mb-2">
+        <span class="badge" style="background:var(--pk-green-light);">${TOPICS[q.topic].name}</span>
+        ${statusBadge}
+      </div>
+      <div class="fw-semibold mb-2">${idx+1}. ${q.q}</div>
+      ${optsHtml}
+      <div class="explain-box"><i class="fa-solid fa-lightbulb me-1"></i>${q.explain}</div>
+    </div>`;
+  }).join('');
+  showPage('reviewPage');
+});
+document.getElementById('reviewBackBtn').addEventListener('click', ()=> showPage('resultPage') );
+</script>
+</body>
+</html>
